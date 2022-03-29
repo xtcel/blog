@@ -25,7 +25,7 @@ WordPress(简称wp)的主题和插件是非常丰富的，有很多专门推荐w
 
 这是我的设计图:
 
-![img](http://qn.xtcel.com/blog/image/jpg/myblog.jpg)
+![img](https://qn.xtcel.com/blog/image/jpg/myblog.jpg)
 
 左侧是导航栏，右侧是文章列表和文章内容详情显示，整个设计非常简洁。
 具体的实现也很简单，主要代码都在index.php、hender.php、article.php、style.css里面。

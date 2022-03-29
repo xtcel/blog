@@ -12,7 +12,7 @@ categories:  ["iOS" ]
 #### 需求
 
 自iOS6加入UICollectionView以来，UICollectionView在各大项目中的使用就非常频繁。UICollectionView灵活的布局可以实现很多以前使用UITableView根本无法完成的效果。这篇文章将会带你一步一步的使用自定义的UICollectionView布局来实现一个课表。为了方便读者，项目的代码在[我的github](https://github.com/yongca887/CustomCollectionViewLayout)上。 项目最终实现的效果如下图所示：  
-![课表.png](http://qn.xtcel.com/blog/image/png/iOS-TimeTable.png)
+![课表.png](https://qn.xtcel.com/blog/image/png/iOS-TimeTable.png)
 
 ### 分析
 
