@@ -1,7 +1,7 @@
 baseurl = "https://xtcel.github.io"
 title = "XTCEL Blog"
 theme = "hugo-theme-cleanwhite"
-languageCode = "en-us"
+languageCode = "zh-CN"
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
 googleAnalytics = ""
@@ -16,8 +16,11 @@ home = ["HTML", "RSS", "Algolia"]
   header_image = "https://qn.xtcel.com/bg/home-bg-ocean.jpg"
   SEOTitle = "张勇的博客 | XTCEL Blog"
   description = "张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。"
-  keyword = "张勇, Xtcel, xtcel, , 张勇的网络日志, 赵化冰的博客, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, Rust, 微服务,"
+  keyword = "张勇, Xtcel, xtcel, , 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, Rust, 微服务,"
   slogan = "关注技术，热爱设计"
+
+  # icp
+  icp = "粤ICP备19158799号-1"
 
   image_404 = "img/404-bg.jpg"
   title_404 = "你来到了没有知识的荒原 :("
