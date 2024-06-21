@@ -1,8 +1,3 @@
----
-title: "About"
-date: 2022-03-04T12:57:05+08:00
-draft: false
----
 # About Me
 
 Hello! I'm xtcel, a seasoned software engineer with over a decade of experience in the tech industry. I graduated from Fujian Normal University with a degree in Software Engineering, and since then, I've been passionately involved in the world of internet product development.
