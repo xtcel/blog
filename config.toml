@@ -13,7 +13,7 @@ hasCJKLanguage = true
 home = ["HTML", "RSS", "Algolia"]
 
 [params]
-  header_image = "http://qn.xtcel.com/bg/home-bg-ocean.jpg"
+  header_image = "https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg"
   SEOTitle = "张勇的博客 | XTCEL Blog"
   description = "张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。"
   keyword = "张勇, Xtcel, xtcel, , 张勇的网络日志, 赵化冰的博客, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, Rust, 微服务,"
