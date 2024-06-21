@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="XTCEL Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg">
+    <meta property="twitter:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg" />
+    
+
+    
+    <meta name="title" content="Mac 上使用 Python 修改 .Plist 文件" />
+    <meta property="og:title" content="Mac 上使用 Python 修改 .Plist 文件" />
+    <meta property="twitter:title" content="Mac 上使用 Python 修改 .Plist 文件" />
+    
+
+    
+    <meta name="description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="张勇, Xtcel, xtcel, 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, 嵌入式,">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Mac 上使用 Python 修改 .Plist 文件 | 张勇的博客 | XTCEL Blog</title>
+
+    <link rel="canonical" href="/post/mac%E4%B8%8A%E4%BD%BF%E7%94%A8python%E4%BF%AE%E6%94%B9.plist%E6%96%87%E4%BB%B6/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XTCEL Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/ios/">ios</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/mac" title="Mac">
+                            Mac
+                        </a>
+                        
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
+                        </a>
+                        
+                    </div>
+                    <h1>Mac 上使用 Python 修改 .Plist 文件</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                xtcel
+                             
+                            on 
+                            Monday, March 5, 2018
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h3 id="起因">起因</h3>
+<p>今天遇到一个需要批量处理写入.Plist文件的需要，一开始想直接手动写入，考虑的内容比较多，手写估计要1个小时，于是想是不是可以用程序员的思维去解决这个问题，怎么解决，写个脚本呗！程序员的天职应该就是偷懒，不会偷懒的程序员不是好程序员。其实之前已经有写过一个类似的脚本，是使用oc写的。使用oc比较自然直接，语言也比较熟悉，但是感觉这么一个小问题，还要创建一个iOS工程太麻烦，而且拷贝文件也很不方便，需要到模拟器的沙盒里面去找文件。</p>
+<p>那用啥呢？首先我想到的便是最近火的不要不要的脚本语言Python，Python非常简单，有很多语法糖，可以快速的构建出强大的功能。</p>
+<h3 id="code">Code</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4">#!/usr/bin/env python</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#coding=utf-8</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> os<span style="color:#ff79c6">,</span>sys
+</span></span><span style="display:flex;"><span>reload(sys) 
+</span></span><span style="display:flex;"><span>sys<span style="color:#ff79c6">.</span>setdefaultencoding(<span style="color:#f1fa8c">&#39;utf-8&#39;</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>base <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;/Users/XiaoYao/Desktop/&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>u <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">u</span><span style="color:#f1fa8c">&#34;抱抱&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">for</span> index <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">25</span>):
+</span></span><span style="display:flex;"><span>    os<span style="color:#ff79c6">.</span>system(<span style="color:#f1fa8c">&#39;/usr/libexec/PlistBuddy -c &#34;Set :</span><span style="color:#f1fa8c">%s</span><span style="color:#f1fa8c">:</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c"> hug_0</span><span style="color:#f1fa8c">%02d</span><span style="color:#f1fa8c">&#34; BigGiftList.plist&#39;</span><span style="color:#ff79c6">%</span>(u, index, index<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>))
+</span></span></code></pre></div><h3 id="心得">心得</h3>
+<h5 id="编码问题">编码问题</h5>
+<p>因为要使用中文字符串，必须在开头加上
+<code>#coding=utf-8</code>
+否则会报错，
+并且需要重载系统默认编码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> os<span style="color:#ff79c6">,</span>sys
+</span></span><span style="display:flex;"><span>reload(sys) 
+</span></span><span style="display:flex;"><span>sys<span style="color:#ff79c6">.</span>setdefaultencoding(<span style="color:#f1fa8c">&#39;utf-8&#39;</span>)
+</span></span></code></pre></div><h5 id="plistbuddy">PlistBuddy</h5>
+<p>PlistBuddy是Mac自带的专门解析plist的小工具</p>
+<ul>
+<li>
+<p>打印plist</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/libexec/PlistBuddy -c <span style="color:#f1fa8c">&#34;print&#34;</span> info.plist
+</span></span></code></pre></div></li>
+<li>
+<p>添加字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/libexec/PlistBuddy -c <span style="color:#f1fa8c">&#39;Add :Version string 1.0&#39;</span> info.plist
+</span></span></code></pre></div><h1 id="先添加key值">先添加key值</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/libexec/PlistBuddy -c <span style="color:#f1fa8c">&#39;Add :Application array&#39;</span> info.plist
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># 添加value值</span>
+</span></span><span style="display:flex;"><span>yans67deMacBook-Pro:needfiles huangyg$ /usr/libexec/PlistBuddy -c <span style="color:#f1fa8c">&#39;Add :Application: string app1&#39;</span> info.plist
+</span></span><span style="display:flex;"><span>yans67deMacBook-Pro:needfiles huangyg$ /usr/libexec/PlistBuddy -c <span style="color:#f1fa8c">&#39;Add :Application: string app2&#39;</span> info.plist
+</span></span><span style="display:flex;"><span>yans67deMacBook-Pro:needfiles huangyg$ /usr/libexec/PlistBuddy -c <span style="color:#f1fa8c">&#39;Add :Application: string app3&#39;</span> info.plist
+</span></span></code></pre></div></li>
+<li>
+<p>删除</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/libexec/PlistBuddy -c <span style="color:#f1fa8c">&#39;Delete :Version&#39;</span> info.plist
+</span></span></code></pre></div></li>
+<li>
+<p>修改</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/libexec/PlistBuddy -c <span style="color:#f1fa8c">&#39;Set :Application:1 string &#34;thi is app1&#34;&#39;</span> info.plist
+</span></span></code></pre></div></li>
+<li>
+<p>合并</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># 将A.plist 合并到 B.plist中</span>
+</span></span><span style="display:flex;"><span>/usr/libexec/PlistBuddy -c <span style="color:#f1fa8c">&#39;Merge A.plist&#39;</span>  B.plist
+</span></span></code></pre></div></li>
+</ul>
+<p>参考：
+链接：https://www.jianshu.com/p/2167f755c47e</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/uicollectionview-reloaddata-crash%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-toggle="tooltip" data-placement="top" title="UICollectionView reloadData Crash 解决方案">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/%E5%BF%98%E8%AE%B0develper%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%AD%94%E6%A1%88%E6%9B%B4%E6%96%B0appleid%E7%BB%91%E5%AE%9A%E6%89%8B%E6%9C%BA/" data-toggle="tooltip" data-placement="top" title="忘记Develper安全问题答案，更新Apple Id绑定手机">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+<script src="https://giscus.app/client.js"
+        data-repo="xtcel/xtcel.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTcyNTM1MjE"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOBv0lkc4CN8jv"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/centos" title="centos">
+                            centos
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/electron" title="electron">
+                            electron
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/flutter" title="flutter">
+                            flutter
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ios" title="ios">
+                            ios
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/mac" title="mac">
+                            mac
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E5%B4%A9%E6%BA%83" title="崩溃">
+                            崩溃
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE" title="防火墙配置">
+                            防火墙配置
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:xtcelzhangyong@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    <li>
+                        <a href="https://x.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; XTCEL Blog 2024 | 粤ICP备19158799号-1
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

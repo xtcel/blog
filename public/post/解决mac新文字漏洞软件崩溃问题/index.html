@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="XTCEL Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg">
+    <meta property="twitter:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg" />
+    
+
+    
+    <meta name="title" content="解决Mac新文字漏洞软件崩溃问题" />
+    <meta property="og:title" content="解决Mac新文字漏洞软件崩溃问题" />
+    <meta property="twitter:title" content="解决Mac新文字漏洞软件崩溃问题" />
+    
+
+    
+    <meta name="description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="张勇, Xtcel, xtcel, 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, 嵌入式,">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>解决Mac新文字漏洞软件崩溃问题 | 张勇的博客 | XTCEL Blog</title>
+
+    <link rel="canonical" href="/post/%E8%A7%A3%E5%86%B3mac%E6%96%B0%E6%96%87%E5%AD%97%E6%BC%8F%E6%B4%9E%E8%BD%AF%E4%BB%B6%E5%B4%A9%E6%BA%83%E9%97%AE%E9%A2%98/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XTCEL Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/ios/">ios</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/mac" title="Mac">
+                            Mac
+                        </a>
+                        
+                        <a class="tag" href="/tags/qq" title="QQ">
+                            QQ
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E5%B4%A9%E6%BA%83" title="崩溃">
+                            崩溃
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E6%BC%8F%E6%B4%9E" title="漏洞">
+                            漏洞
+                        </a>
+                        
+                    </div>
+                    <h1>解决Mac新文字漏洞软件崩溃问题</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                    XTCEL Blog
+                             
+                            on 
+                            Friday, July 31, 2015
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h4 id="恶作剧">恶作剧</h4>
+<p>早上同事用QQ发了一段文字给我，内容为如下： 玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉王玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉 当我点开这条QQ消息的时候，QQ瞬间就崩溃了！我还不知道怎么回事，重新打开了QQ查看刚才发过来的这条消息，QQ再次崩溃。怎么QQ崩溃啦我整个人都不好了，233…… 我上网查了一下，发现很多人都遇到了类似问题，原来这是一个新的Mac文字漏洞。</p>
+<h4 id="探索">探索</h4>
+<p>以下是有人在知乎上提的问题：</p>
+<p>从浏览次数和关注人数来看，说明很多人都被调戏了！QQ的崩溃信息如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Process: QQ <span style="color:#ff79c6">[</span>1588<span style="color:#ff79c6">]</span> Path: /Applications/QQ.app/Contents/MacOS/QQ Identifier: com.tencent.qq Version: 4.0.2 <span style="color:#ff79c6">(</span>18031<span style="color:#ff79c6">)</span> Code Type: X86 <span style="color:#ff79c6">(</span>Native<span style="color:#ff79c6">)</span> Parent Process: ??? <span style="color:#ff79c6">[</span>1<span style="color:#ff79c6">][</span>1<span style="color:#ff79c6">]</span> Responsible: QQ <span style="color:#ff79c6">[</span>1588<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Date/Time: 2015-07-20 16:53:34.393 +0800 OS Version: Mac OS X 10.10.4 <span style="color:#ff79c6">(</span>14E46<span style="color:#ff79c6">)</span> Report Version: <span style="color:#bd93f9">11</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Time Awake Since Boot: <span style="color:#bd93f9">6300</span> seconds
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Crashed Thread: <span style="color:#bd93f9">2</span> Dispatch queue: NSTextCheckingOperationQueue :: NSOperation 0x7cab7510 <span style="color:#ff79c6">(</span>QOS: USER_INITIATED<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Exception Type: EXC_BREAKPOINT <span style="color:#ff79c6">(</span>SIGTRAP<span style="color:#ff79c6">)</span> Exception Codes: 0x0000000000000002, 0x0000000000000000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Application Specific Information: *** Terminating app due to uncaught exception <span style="color:#f1fa8c">&#39;NSInternalInconsistencyException&#39;</span>, reason: <span style="color:#f1fa8c">&#39;condition &#34;must be there&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Application Specific Backtrace 1: <span style="color:#bd93f9">0</span> CoreFoundation 0x917b3c63 <span style="color:#f1fa8c">\_\_</span>raiseError + <span style="color:#bd93f9">195</span> <span style="color:#bd93f9">1</span> libobjc.A.dylib 0x95c7aa2a objc_exception_throw + <span style="color:#bd93f9">276</span> <span style="color:#bd93f9">2</span> CoreFoundation 0x917b3b7d +<span style="color:#ff79c6">[</span>NSException raise:format:<span style="color:#ff79c6">]</span> + <span style="color:#bd93f9">141</span> <span style="color:#bd93f9">3</span> DataDetectorsCore 0x9b8761e2 DDRaiseException + <span style="color:#bd93f9">67</span> <span style="color:#bd93f9">4</span> DataDetectorsCore 0x9b8914d0 DDCrashv + <span style="color:#bd93f9">145</span> <span style="color:#bd93f9">5</span> DataDetectorsCore 0x9b891503 DDCrash + <span style="color:#bd93f9">27</span> <span style="color:#bd93f9">6</span> DataDetectorsCore 0x9b84c170 DDScannerScanQuery + <span style="color:#bd93f9">729</span> <span style="color:#bd93f9">7</span> DataDetectorsCore 0x9b84ba6a DDScannerScanStringWithRange + <span style="color:#bd93f9">319</span> <span style="color:#bd93f9">8</span> AppKit 0x93fb1f41 checkDataDetectors + <span style="color:#bd93f9">161</span> <span style="color:#bd93f9">9</span> AppKit 0x93faf40a NSSpellCheckerCheckString + <span style="color:#bd93f9">16505</span> <span style="color:#bd93f9">10</span> AppKit 0x93fab336 -<span style="color:#ff79c6">[</span>NSTextCheckingOperation main<span style="color:#ff79c6">]</span> + <span style="color:#bd93f9">162</span> <span style="color:#bd93f9">11</span> Foundation 0x9b2b937e -<span style="color:#ff79c6">[</span><span style="color:#f1fa8c">\_\_</span>NSOperationInternal <span style="color:#f1fa8c">\_</span>start:<span style="color:#ff79c6">]</span> + <span style="color:#bd93f9">770</span> <span style="color:#bd93f9">12</span> Foundation 0x9b2b9071 -<span style="color:#ff79c6">[</span>NSOperation start<span style="color:#ff79c6">]</span> + <span style="color:#bd93f9">71</span> <span style="color:#bd93f9">13</span> Foundation 0x9b2b8d8b <span style="color:#f1fa8c">\_</span>_NSOQSchedule_f + <span style="color:#bd93f9">213</span> <span style="color:#bd93f9">14</span> libdispatch.dylib 0x95e61130 <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>client_callout + <span style="color:#bd93f9">50</span> <span style="color:#bd93f9">15</span> libdispatch.dylib 0x95e64d05 <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>queue_drain + <span style="color:#bd93f9">1017</span> <span style="color:#bd93f9">16</span> libdispatch.dylib 0x95e6699d <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>queue_invoke + <span style="color:#bd93f9">186</span> <span style="color:#bd93f9">17</span> libdispatch.dylib 0x95e63f89 <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>root_queue_drain + <span style="color:#bd93f9">395</span> <span style="color:#bd93f9">18</span> libdispatch.dylib 0x95e7363d <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>worker_thread3 + <span style="color:#bd93f9">97</span> <span style="color:#bd93f9">19</span> libsystem_pthread.dylib 0x9794c1da <span style="color:#f1fa8c">\_</span>pthread<span style="color:#f1fa8c">\_</span>wqthread + <span style="color:#bd93f9">724</span> <span style="color:#bd93f9">20</span> libsystem_pthread.dylib 0x97949e2e start_wqthread + <span style="color:#bd93f9">30</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Thread <span style="color:#bd93f9">2</span> Crashed:: Dispatch queue: NSTextCheckingOperationQueue :: NSOperation 0x7cab7510 <span style="color:#ff79c6">(</span>QOS: USER_INITIATED<span style="color:#ff79c6">)</span> <span style="color:#bd93f9">0</span> com.apple.CoreFoundation 0x917b45f7 ***TERMINATING_DUE_TO_UNCAUGHT_EXCEPTION*** + <span style="color:#bd93f9">7</span> <span style="color:#bd93f9">1</span> com.apple.CoreFoundation 0x917b3f79 <span style="color:#f1fa8c">\_\_</span>raiseError + <span style="color:#bd93f9">985</span> <span style="color:#bd93f9">2</span> libobjc.A.dylib 0x95c7aa2a objc_exception_throw + <span style="color:#bd93f9">276</span> <span style="color:#bd93f9">3</span> com.apple.CoreFoundation 0x917b3b7d +<span style="color:#ff79c6">[</span>NSException raise:format:<span style="color:#ff79c6">]</span> + <span style="color:#bd93f9">141</span> <span style="color:#bd93f9">4</span> com.apple.datadetectorscore 0x9b8761e2 DDRaiseException + <span style="color:#bd93f9">67</span> <span style="color:#bd93f9">5</span> com.apple.datadetectorscore 0x9b8914d0 DDCrashv + <span style="color:#bd93f9">145</span> <span style="color:#bd93f9">6</span> com.apple.datadetectorscore 0x9b891503 DDCrash + <span style="color:#bd93f9">27</span> <span style="color:#bd93f9">7</span> com.apple.datadetectorscore 0x9b84c170 DDScannerScanQuery + <span style="color:#bd93f9">729</span> <span style="color:#bd93f9">8</span> com.apple.datadetectorscore 0x9b84ba6a DDScannerScanStringWithRange + <span style="color:#bd93f9">319</span> <span style="color:#bd93f9">9</span> com.apple.AppKit 0x93fb1f41 checkDataDetectors + <span style="color:#bd93f9">161</span> <span style="color:#bd93f9">10</span> com.apple.AppKit 0x93faf40a NSSpellCheckerCheckString + <span style="color:#bd93f9">16505</span> <span style="color:#bd93f9">11</span> com.apple.AppKit 0x93fab336 -<span style="color:#ff79c6">[</span>NSTextCheckingOperation main<span style="color:#ff79c6">]</span> + <span style="color:#bd93f9">162</span> <span style="color:#bd93f9">12</span> com.apple.Foundation 0x9b2b937e -<span style="color:#ff79c6">[</span><span style="color:#f1fa8c">\_\_</span>NSOperationInternal <span style="color:#f1fa8c">\_</span>start:<span style="color:#ff79c6">]</span> + <span style="color:#bd93f9">770</span> <span style="color:#bd93f9">13</span> com.apple.Foundation 0x9b2b9071 -<span style="color:#ff79c6">[</span>NSOperation start<span style="color:#ff79c6">]</span> + <span style="color:#bd93f9">71</span> <span style="color:#bd93f9">14</span> com.apple.Foundation 0x9b2b8d8b <span style="color:#f1fa8c">\_</span>_NSOQSchedule_f + <span style="color:#bd93f9">213</span> <span style="color:#bd93f9">15</span> libdispatch.dylib 0x95e61130 <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>client_callout + <span style="color:#bd93f9">50</span> <span style="color:#bd93f9">16</span> libdispatch.dylib 0x95e64d05 <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>queue_drain + <span style="color:#bd93f9">1017</span> <span style="color:#bd93f9">17</span> libdispatch.dylib 0x95e6699d <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>queue_invoke + <span style="color:#bd93f9">186</span> <span style="color:#bd93f9">18</span> libdispatch.dylib 0x95e63f89 <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>root_queue_drain + <span style="color:#bd93f9">395</span> <span style="color:#bd93f9">19</span> libdispatch.dylib 0x95e7363d <span style="color:#f1fa8c">\_</span>dispatch<span style="color:#f1fa8c">\_</span>worker_thread3 + <span style="color:#bd93f9">97</span> <span style="color:#bd93f9">20</span> libsystem_pthread.dylib 0x9794c1da <span style="color:#f1fa8c">\_</span>pthread<span style="color:#f1fa8c">\_</span>wqthread + <span style="color:#bd93f9">724</span> <span style="color:#bd93f9">21</span> libsystem_pthread.dylib 0x97949e2e start_wqthread + <span style="color:#bd93f9">30</span> <span style="color:#f1fa8c">\`</span><span style="color:#f1fa8c">`</span><span style="color:#f1fa8c">\`</span>
+</span></span></code></pre></div><h4 id="分析">分析</h4>
+<p>从崩溃信息可以看到是在NSTextCheckingOperationQueue线程中崩溃的，这是一个执行文本检查的线程。 其实之前苹果就出过几次类似问题，比如”Fill:///“崩溃问题。都是DataDectorsCore.framework这个framework的问题， 这个库的主要作用是自带的拼写检测和特殊格式的信息（比如URL、电话号码、时间等）匹配都会触发 DataDectorsCore.framework。 我查找了”Fill:///“崩溃问题的解决方案，于是也尝试了同样的方案解决这个问题，果然不出所料的不再崩溃了！</p>
+<h4 id="debug">Debug</h4>
+<p><strong>解决崩溃问题的方法就是：</strong> 在终端运行以下两条命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo mv -v /System/Library/PrivateFrameworks/DataDetectorsCore.framework/Versions/A/Resources/com.apple.datadetectorscore.cache.urlifier.system /System/Library/PrivateFrameworks/DataDetectorsCore.framework/Versions/A/Resources/com.apple.datadetectorscore.cache.urlifier.system.backup
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo mv -v /System/Library/PrivateFrameworks/DataDetectorsCore.framework/Versions/A/Resources/com.apple.datadetectorscore.cache.full.asia.system /System/Library/PrivateFrameworks/DataDetectorsCore.framework/Versions/A/Resources/com.apple.datadetectorscore.cache.full.asia.system.backup
+</span></span></code></pre></div>
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/ios%E8%AE%BE%E5%A4%87%E6%96%B9%E5%90%91%E6%8E%A7%E5%88%B6/" data-toggle="tooltip" data-placement="top" title="iOS设备方向控制">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/ios%E6%97%8B%E8%BD%AC%E5%9B%BE%E7%89%87%E9%94%AF%E9%BD%BF%E9%97%AE%E9%A2%98/" data-toggle="tooltip" data-placement="top" title="iOS旋转图片锯齿问题">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+<script src="https://giscus.app/client.js"
+        data-repo="xtcel/xtcel.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTcyNTM1MjE"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOBv0lkc4CN8jv"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/centos" title="centos">
+                            centos
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/electron" title="electron">
+                            electron
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/flutter" title="flutter">
+                            flutter
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ios" title="ios">
+                            ios
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/mac" title="mac">
+                            mac
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E5%B4%A9%E6%BA%83" title="崩溃">
+                            崩溃
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE" title="防火墙配置">
+                            防火墙配置
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:xtcelzhangyong@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    <li>
+                        <a href="https://x.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; XTCEL Blog 2024 | 粤ICP备19158799号-1
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

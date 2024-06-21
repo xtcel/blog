@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/linux/</link>
+    <description>Recent content in Linux on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux查找大文件并清理</title>
+      <link>http://localhost:1313/post/linux%E6%9F%A5%E6%89%BE%E5%A4%A7%E6%96%87%E4%BB%B6%E5%B9%B6%E6%B8%85%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/linux%E6%9F%A5%E6%89%BE%E5%A4%A7%E6%96%87%E4%BB%B6%E5%B9%B6%E6%B8%85%E7%90%86/</guid>
+      <description>发现问题 测试服后台突然打不开，查看log上面写着文件写入失败，以为是目录权限问题，修改权限后还是不行。（之前因为权限问题，不能写入，修改权限</description>
+    </item>
+  </channel>
+</rss>

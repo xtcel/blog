@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>“首款开源IDE” on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/%E9%A6%96%E6%AC%BE%E5%BC%80%E6%BA%90ide/</link>
+    <description>Recent content in “首款开源IDE” on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 04 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E9%A6%96%E6%AC%BE%E5%BC%80%E6%BA%90ide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>阿里重磅开源！首款开源 IDE 研发框架 OpenSumi</title>
+      <link>http://localhost:1313/post/opensumi/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/opensumi/</guid>
+      <description>历经3年的开发与打磨，在阿里集团及蚂蚁集团共建小组的努力下，OpenSumi 作为国内首个强定制性、高性能，兼容 VS Code 插件体系的 IDE 研发框架，今天</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Electron on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/electron/</link>
+    <description>Recent content in Electron on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 06 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/electron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Electron菜单栏和导航栏隐藏</title>
+      <link>http://localhost:1313/post/electron%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%92%8C%E5%AF%BC%E8%88%AA%E6%A0%8F%E9%9A%90%E8%97%8F/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/electron%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%92%8C%E5%AF%BC%E8%88%AA%E6%A0%8F%E9%9A%90%E8%97%8F/</guid>
+      <description>隐藏菜单栏 在main/index.js中修改ready事件回调 app.on(&amp;#39;ready&amp;#39;, () =&amp;gt; { createWindow() // 隐藏菜单栏 const { Menu } = require(&amp;#39;electron&amp;#39;); Menu.setApplicationMenu(null); // hide menu for Mac if (process.platform !== &amp;#39;darwin&amp;#39;) { app.dock.hide(); } }) 隐藏导航栏 在初始</description>
+    </item>
+    <item>
+      <title>Electron-vue报错Webpack ReferenceError:process is not defined</title>
+      <link>http://localhost:1313/post/electron-vue_error_webpack_referenceerrorprocess_is_not_defined/</link>
+      <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/electron-vue_error_webpack_referenceerrorprocess_is_not_defined/</guid>
+      <description>报错 Webpack ReferenceError: process is not defined 最新重新安装electron-vue后，使用yarn安装项目，结果一直报错。起初以为是yarn的问题，使用npm安装也发现同</description>
+    </item>
+    <item>
+      <title>在 Electron 中使用 OpenCV.js</title>
+      <link>http://localhost:1313/post/%E5%9C%A8electron-vue%E4%B8%AD%E4%BD%BF%E7%94%A8opencv.js/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/%E5%9C%A8electron-vue%E4%B8%AD%E4%BD%BF%E7%94%A8opencv.js/</guid>
+      <description>简介 Electron Electron 是一个使用 JavaScript, HTML 和 CSS 等 Web 技术创建原生程序的框架，可以一键生成在Window、Linux、Mac的桌面应用，他隔离了平台之间的差异，抽象</description>
+    </item>
+  </channel>
+</rss>

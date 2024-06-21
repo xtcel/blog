@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jetbrains on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/jetbrains/</link>
+    <description>Recent content in Jetbrains on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 05 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/jetbrains/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jetbrains IDE全系列破解</title>
+      <link>http://localhost:1313/post/jetbrainside%E5%85%A8%E7%B3%BB%E5%88%97%E7%A0%B4%E8%A7%A3/</link>
+      <pubDate>Sun, 05 Jun 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/jetbrainside%E5%85%A8%E7%B3%BB%E5%88%97%E7%A0%B4%E8%A7%A3/</guid>
+      <description>JetBrains是一家捷克的软件开发公司，该公司位于捷克的布拉格，并在俄国的圣彼得堡及美国麻州波士顿都设有办公室，该公司最为人所熟知的产品</description>
+    </item>
+  </channel>
+</rss>

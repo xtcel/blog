@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UIButton on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/uibutton/</link>
+    <description>Recent content in UIButton on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 22 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/uibutton/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UIButton 设置 title 文字时闪动</title>
+      <link>http://localhost:1313/post/uibutton%E8%AE%BE%E7%BD%AEtitle%E6%96%87%E5%AD%97%E6%97%B6%E9%97%AA%E5%8A%A8/</link>
+      <pubDate>Fri, 22 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/uibutton%E8%AE%BE%E7%BD%AEtitle%E6%96%87%E5%AD%97%E6%97%B6%E9%97%AA%E5%8A%A8/</guid>
+      <description>UIButton-system类型 动态设置title文字时闪动 解决方案： self.sendCodeButton.titleLabel?.text = &amp;#34;\(self.remainCount)s重新发送&amp;#3</description>
+    </item>
+  </channel>
+</rss>

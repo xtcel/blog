@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tops on XTCEL Blog</title>
+    <link>http://localhost:1313/top/</link>
+    <description>Recent content in Tops on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 04 Mar 2022 12:57:45 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Books</title>
+      <link>http://localhost:1313/top/books/</link>
+      <pubDate>Fri, 04 Mar 2022 12:57:45 +0800</pubDate>
+      <guid>http://localhost:1313/top/books/</guid>
+      <description>Machine learning学习笔记 Coursera 在线课程 Machine learning 笔记 讲师: 吴恩达(Andrew Ng) 课程地址：https://www.coursera.org/lear</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/top/about/</link>
+      <pubDate>Fri, 04 Mar 2022 12:57:05 +0800</pubDate>
+      <guid>http://localhost:1313/top/about/</guid>
+      <description>About Me Hello! I&amp;rsquo;m xtcel, a seasoned software engineer with over a decade of experience in the tech industry. I graduated from Fujian Normal University with a degree in Software Engineering, and since then, I&amp;rsquo;ve been passionately involved in the world of internet product development.&#xA;Professional Journey With 10 years of hands-on experience in internet product development, I&amp;rsquo;ve honed my skills across a wide array of technologies. My expertise spans multiple platforms and frameworks, allowing me to create versatile and robust solutions.</description>
+    </item>
+    <item>
+      <title>Posts Archive</title>
+      <link>http://localhost:1313/top/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/top/archive/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

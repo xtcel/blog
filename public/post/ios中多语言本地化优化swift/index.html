@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="XTCEL Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg">
+    <meta property="twitter:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg" />
+    
+
+    
+    <meta name="title" content="iOS中多语言本地化优化(Swift)" />
+    <meta property="og:title" content="iOS中多语言本地化优化(Swift)" />
+    <meta property="twitter:title" content="iOS中多语言本地化优化(Swift)" />
+    
+
+    
+    <meta name="description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="张勇, Xtcel, xtcel, 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, 嵌入式,">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>iOS中多语言本地化优化(Swift) | 张勇的博客 | XTCEL Blog</title>
+
+    <link rel="canonical" href="/post/ios%E4%B8%AD%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96%E4%BC%98%E5%8C%96swift/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XTCEL Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/ios/">ios</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/ios" title="iOS">
+                            iOS
+                        </a>
+                        
+                        <a class="tag" href="/tags/swift" title="Swift">
+                            Swift
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96" title="多语言本地化">
+                            多语言本地化
+                        </a>
+                        
+                    </div>
+                    <h1>iOS中多语言本地化优化(Swift)</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                    XTCEL Blog
+                             
+                            on 
+                            Monday, May 14, 2018
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <blockquote>
+<p>原文链接：<a href="http://www.cocoachina.com/ios/20170809/20190.html">http://www.cocoachina.com/ios/20170809/20190.html</a>
+按照原文操作，发现脚本有问题，各种Google+Baidu狂补Shell+sed知识，最终修复了shell脚本问题(正确脚本在下文中已更正)。</p>
+</blockquote>
+<p>
+  <img src="https://upload-images.jianshu.io/upload_images/453533-64e9d429a7c41e72.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="NSLocalizedString.jpg">
+
+
+本文从提升效率和减少错误两方面对传统的多语言本地化方式进行了优化。</p>
+<ul>
+<li>
+<p>传统的方法</p>
+</li>
+<li>
+<p>提升点效率</p>
+</li>
+<li>
+<p>减少些错误</p>
+</li>
+<li>
+<p>自动化万岁</p>
+<h4 id="传统的方法">传统的方法</h4>
+<p>在 Localizable.strings 中写入多种语言的版本，然后使用 NSLocalizedString 进行本地化:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span># en.lproj<span style="color:#ff79c6">/</span>Localizable.strings
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;login&#34;</span> = <span style="color:#f1fa8c">&#34;Login&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;logout&#34;</span> = <span style="color:#f1fa8c">&#34;Logout&#34;</span>;
+</span></span><span style="display:flex;"><span># zh<span style="color:#ff79c6">-</span>Hans.lproj<span style="color:#ff79c6">/</span>Localizable.strings
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;login&#34;</span> = <span style="color:#f1fa8c">&#34;登录&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;logout&#34;</span> = <span style="color:#f1fa8c">&#34;退出&#34;</span>;
+</span></span><span style="display:flex;"><span># usage
+</span></span><span style="display:flex;"><span>loginButton.title = NSLocalizedString(<span style="color:#f1fa8c">&#34;login&#34;</span>, comment: <span style="color:#f1fa8c">&#34;login&#34;</span>)
+</span></span><span style="display:flex;"><span>logoutButton.title = NSLocalizedString(<span style="color:#f1fa8c">&#34;logout&#34;</span>, comment: <span style="color:#f1fa8c">&#34;logout&#34;</span>)
+</span></span></code></pre></div><p>这有什么问题呢？</p>
+<p>繁琐！每次都要写 NSLocalizedString(“xxx”, comment: “xxx”) ，虽然有代码补全，但依然很费时。</p>
+<h4 id="提升点效率">提升点效率</h4>
+<p>直接上代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">extension</span> <span style="color:#50fa7b">String</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">localized</span>: <span style="color:#8be9fd;font-style:italic">String</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> NSLocalizedString(<span style="color:#ff79c6">self</span>, comment: <span style="color:#ff79c6">self</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>于是现在的使用方式就变成了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>loginButton.title = <span style="color:#f1fa8c">&#34;login&#34;</span>.localized
+</span></span><span style="display:flex;"><span>logoutButton.title = <span style="color:#f1fa8c">&#34;logout&#34;</span>.localized
+</span></span></code></pre></div><p>这样代码简洁多了，也保留了代码的自解释。</p>
+<p>但，依然还有问题，如果我不小心写成了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>loginButton.title = <span style="color:#f1fa8c">&#34;login&#34;</span>.localized
+</span></span><span style="display:flex;"><span>logoutButton.title = <span style="color:#f1fa8c">&#34;loguot&#34;</span>.localized
+</span></span></code></pre></div><p>编译不会报错，但logoutButton的title却出不来（注意 “loguot”.localized），写错一个字母，抓bug抓好长时间的经历相信很多人都遇到过吧。</p>
+<p>这里涉及到编码中的一个小技巧：不要徒手写同一个需要多次使用的字符串，尽量定义成常量进行调用</p>
+<p>####减少些错误
+还是直接上代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">extension</span> <span style="color:#50fa7b">String</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">localized_login</span>: <span style="color:#8be9fd;font-style:italic">String</span> { <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;login&#34;</span>.localized }
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">localized_logout</span>: <span style="color:#8be9fd;font-style:italic">String</span> { <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;logout&#34;</span>.localized }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在用起来就更爽了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>loginButton.title = .localized_login
+</span></span><span style="display:flex;"><span>logoutButton.title = .localized_logout
+</span></span></code></pre></div><p>得益于Xcode代码提示补全的功能，我只需输入”.” “login” 回车，基本就就可以完成输入：
+
+  <img src="https://upload-images.jianshu.io/upload_images/453533-19f5c90854fa85fe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3435928-77c87961bea59ff2.jpg">
+
+</p>
+<p>乍一看，已经将写字符串时出错的概率降到最低了，但这样又要多写一堆代码，岂不是把之前好不容易提升起来的效率又降低了，再加上万一，我们在写 localized_logout 时还是写成了 “loguot”.localized ，这不是”辛辛苦苦大半年，一朝回到解放前”的节奏？</p>
+<h4 id="自动化万岁">自动化万岁</h4>
+<p>思路：使用脚本读取 Localizable.strings ，然后输出成我们需要的常量格式。
+
+  <img src="https://upload-images.jianshu.io/upload_images/453533-50664cae8e5538dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png">
+
+</p>
+<p>Build Phases中新建一个 Run Script，填入以下脚本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span># Localizable.strings文件路径
+</span></span><span style="display:flex;"><span>localizableFile=<span style="color:#f1fa8c">&#34;${SRCROOT}/${PROJECT_NAME}/Support/en.lproj/Localizable.strings&#34;</span>
+</span></span><span style="display:flex;"><span># 生成的swift文件路径（根据个人习惯修改）
+</span></span><span style="display:flex;"><span>localizedFile=<span style="color:#f1fa8c">&#34;${SRCROOT}/${PROJECT_NAME}/Source/Utils/LocalizedUtils.swift&#34;</span>
+</span></span><span style="display:flex;"><span># 将localizable.strings中的文本转为swift格式的常量，存入一个临时文件
+</span></span><span style="display:flex;"><span>sed <span style="color:#f1fa8c">&#34;s/^</span><span style="color:#f1fa8c">\&#34;</span><span style="color:#f1fa8c">\(</span>[a<span style="color:#ff79c6">-</span>z]<span style="color:#ff79c6">*</span>\<span style="color:#f1fa8c">)</span><span style="color:#f1fa8c">.*/static var localized_</span><span style="color:#f1fa8c">\1</span><span style="color:#f1fa8c"> : String { return  </span><span style="color:#f1fa8c">\&#34;\1\&#34;</span><span style="color:#f1fa8c">.localized }/g&#34;</span> <span style="color:#f1fa8c">&#34;${localizableFile}&#34;</span> <span style="color:#ff79c6">&gt;</span> <span style="color:#f1fa8c">&#34;${localizedFile}.tmp&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 先将localized作为计算属性输出到目标文件
+</span></span><span style="display:flex;"><span>echo <span style="color:#ff79c6">-</span>e <span style="color:#f1fa8c">&#34;import Foundation</span><span style="color:#f1fa8c">\n\n</span><span style="color:#f1fa8c">extension String {</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">  var localized: String { return NSLocalizedString(self, comment: self) }&#34;</span> <span style="color:#ff79c6">&gt;</span> <span style="color:#f1fa8c">&#34;${localizedFile}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 再将临时文件中的常量增量输出到目标文件
+</span></span><span style="display:flex;"><span>cat <span style="color:#f1fa8c">&#34;${localizedFile}.tmp&#34;</span> <span style="color:#ff79c6">&gt;&gt;</span> <span style="color:#f1fa8c">&#34;${localizedFile}&#34;</span>
+</span></span><span style="display:flex;"><span># 最后增量输出一个<span style="color:#f1fa8c">&#34;}&#34;</span>到目标文件，完成输出
+</span></span><span style="display:flex;"><span>echo <span style="color:#ff79c6">-</span>e <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">}&#34;</span> <span style="color:#ff79c6">&gt;&gt;</span> <span style="color:#f1fa8c">&#34;${localizedFile}&#34;</span>
+</span></span><span style="display:flex;"><span># 删除临时文件
+</span></span><span style="display:flex;"><span>rm <span style="color:#f1fa8c">&#34;${localizedFile}.tmp&#34;</span>
+</span></span></code></pre></div><p>以上脚本的作用就是将localizable.strings中的内容转换成swift的常量形式，并作为String的extension存储起来，具体步骤看注释。
+(原文中将文本转为Swift格式常量中，错误的将值作为NSLocalizedString的key,原本shell脚本如下：)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sed <span style="color:#f1fa8c">&#34;s/^\&#34;/  static var localized_/g&#34;</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">localizableFile</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> | sed <span style="color:#f1fa8c">&#34;s/\&#34; = \&#34;/: String { return \&#34;/g&#34;</span> | sed <span style="color:#f1fa8c">&#34;s/;</span>$<span style="color:#f1fa8c">/.localized }/g&#34;</span> &gt; <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">localizedFile</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">.tmp&#34;</span> 
+</span></span></code></pre></div><p>其中有几点需要注意：</p>
+<ul>
+<li>
+<p>sed的用法中，^… 表示以…开头，…$ 表示以…结尾 [参考链接]。</p>
+</li>
+<li>
+<p>&gt; 表示覆盖输出到文件，&raquo; 表示增量输出到文件。</p>
+</li>
+<li>
+<p>echo -e 表示将\n作为换行符输出（其他转义字符同效）。</p>
+</li>
+<li>
+<p>将 Run Script 放在 Compile Sources 的上面，这样可以在编译代码前执行，如果出现错误也很容易定位（例如Localizable.strings中行末忘记写分号）。
+脚本效果：</p>
+</li>
+</ul>
+<p>本地化文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span># en.lproj<span style="color:#ff79c6">/</span>Localizable.strings
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;login&#34;</span> = <span style="color:#f1fa8c">&#34;Login&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;logout&#34;</span> = <span style="color:#f1fa8c">&#34;Logout&#34;</span>;
+</span></span></code></pre></div><p>输出文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span># LocalizedUtils.swift
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">import</span> <span style="color:#50fa7b">Foundation</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">extension</span> <span style="color:#50fa7b">String</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">localized</span>: <span style="color:#8be9fd;font-style:italic">String</span> { <span style="color:#ff79c6">return</span> NSLocalizedString(<span style="color:#ff79c6">self</span>, comment: <span style="color:#ff79c6">self</span>) }
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">localized_login</span>: <span style="color:#8be9fd;font-style:italic">String</span> { <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;login&#34;</span>.localized }
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">localized_logout</span>: <span style="color:#8be9fd;font-style:italic">String</span> { <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;logout&#34;</span>.localized }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>至此，我们只要在写好Localizable.strings或有修改时 ?+B build一下，就能愉快的使用了。</p>
+<p>原文链接：http://www.cocoachina.com/ios/20170809/20190.html</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/rxswift0-mvvm%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5inputs-outputs/" data-toggle="tooltip" data-placement="top" title="RxSwift MVVM最佳实践：Inputs - Outputs（翻译）">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/ios%E6%8E%A7%E4%BB%B6%E4%BC%A0%E4%BB%BB%E6%84%8F%E7%B1%BB%E5%9E%8B%E5%80%BC/" data-toggle="tooltip" data-placement="top" title="iOS控件传任意类型值">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+<script src="https://giscus.app/client.js"
+        data-repo="xtcel/xtcel.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTcyNTM1MjE"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOBv0lkc4CN8jv"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/centos" title="centos">
+                            centos
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/electron" title="electron">
+                            electron
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/flutter" title="flutter">
+                            flutter
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ios" title="ios">
+                            ios
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/mac" title="mac">
+                            mac
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E5%B4%A9%E6%BA%83" title="崩溃">
+                            崩溃
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE" title="防火墙配置">
+                            防火墙配置
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:xtcelzhangyong@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    <li>
+                        <a href="https://x.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; XTCEL Blog 2024 | 粤ICP备19158799号-1
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenCV on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/opencv/</link>
+    <description>Recent content in OpenCV on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 15 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 Electron 中使用 OpenCV.js</title>
+      <link>http://localhost:1313/post/%E5%9C%A8electron-vue%E4%B8%AD%E4%BD%BF%E7%94%A8opencv.js/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/%E5%9C%A8electron-vue%E4%B8%AD%E4%BD%BF%E7%94%A8opencv.js/</guid>
+      <description>简介 Electron Electron 是一个使用 JavaScript, HTML 和 CSS 等 Web 技术创建原生程序的框架，可以一键生成在Window、Linux、Mac的桌面应用，他隔离了平台之间的差异，抽象</description>
+    </item>
+  </channel>
+</rss>

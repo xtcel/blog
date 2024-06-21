@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MVVM on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/mvvm/</link>
+    <description>Recent content in MVVM on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mvvm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RxSwift MVVM最佳实践：Inputs - Outputs（翻译）</title>
+      <link>http://localhost:1313/post/rxswift0-mvvm%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5inputs-outputs/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/rxswift0-mvvm%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5inputs-outputs/</guid>
+      <description>当谈到iOS架构时，MVVM是个很好的选择。它不仅提供了比MVC更好的可测试性，而且与VIPER等同类架构相比，这个架构是轻量级的。尽管如此</description>
+    </item>
+  </channel>
+</rss>

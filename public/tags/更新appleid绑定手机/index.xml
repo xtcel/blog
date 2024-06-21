@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>更新AppleId绑定手机 on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/%E6%9B%B4%E6%96%B0appleid%E7%BB%91%E5%AE%9A%E6%89%8B%E6%9C%BA/</link>
+    <description>Recent content in 更新AppleId绑定手机 on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 24 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E6%9B%B4%E6%96%B0appleid%E7%BB%91%E5%AE%9A%E6%89%8B%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>忘记Develper安全问题答案，更新Apple Id绑定手机</title>
+      <link>http://localhost:1313/post/%E5%BF%98%E8%AE%B0develper%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%AD%94%E6%A1%88%E6%9B%B4%E6%96%B0appleid%E7%BB%91%E5%AE%9A%E6%89%8B%E6%9C%BA/</link>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/%E5%BF%98%E8%AE%B0develper%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%AD%94%E6%A1%88%E6%9B%B4%E6%96%B0appleid%E7%BB%91%E5%AE%9A%E6%89%8B%E6%9C%BA/</guid>
+      <description>最近登录ITC,发现苹果又更新协议了，正常这个时候都是想直接到developer.apple.com直接点同意协议就👌，不过这次打开deve</description>
+    </item>
+  </channel>
+</rss>

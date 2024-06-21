@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WordPress on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/wordpress/</link>
+    <description>Recent content in WordPress on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 09 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WordPress主题制作心得</title>
+      <link>http://localhost:1313/post/wordpress%E4%B8%BB%E9%A2%98%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/</link>
+      <pubDate>Thu, 09 Jun 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/wordpress%E4%B8%BB%E9%A2%98%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/</guid>
+      <description>起缘 与WordPress的缘，来自于几年前看到各种大神都有个人博客，自己也想弄一个，纯粹是出于羡慕与好奇。当时不会html、css也不会PH</description>
+    </item>
+  </channel>
+</rss>

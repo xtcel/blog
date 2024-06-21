@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/ruby/</link>
+    <description>Recent content in Ruby on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 06 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac更新Ruby报错</title>
+      <link>http://localhost:1313/post/mac-update-ruby-error/</link>
+      <pubDate>Wed, 06 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/mac-update-ruby-error/</guid>
+      <description>Mac更新Ruby报错 sudo gem update --system ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/update_rubygems 解决方法： sudo gem update -n /usr/local/bin --system</description>
+    </item>
+  </channel>
+</rss>

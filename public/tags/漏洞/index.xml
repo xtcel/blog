@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>漏洞 on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/%E6%BC%8F%E6%B4%9E/</link>
+    <description>Recent content in 漏洞 on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 31 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E6%BC%8F%E6%B4%9E/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>解决Mac新文字漏洞软件崩溃问题</title>
+      <link>http://localhost:1313/post/%E8%A7%A3%E5%86%B3mac%E6%96%B0%E6%96%87%E5%AD%97%E6%BC%8F%E6%B4%9E%E8%BD%AF%E4%BB%B6%E5%B4%A9%E6%BA%83%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/%E8%A7%A3%E5%86%B3mac%E6%96%B0%E6%96%87%E5%AD%97%E6%BC%8F%E6%B4%9E%E8%BD%AF%E4%BB%B6%E5%B4%A9%E6%BA%83%E9%97%AE%E9%A2%98/</guid>
+      <description>恶作剧 早上同事用QQ发了一段文字给我，内容为如下： 玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉玉</description>
+    </item>
+  </channel>
+</rss>

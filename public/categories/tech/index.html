@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="XTCEL Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg">
+    <meta property="twitter:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg" />
+    
+
+    
+    <meta name="title" content="" />
+    <meta property="og:title" content="" />
+    <meta property="twitter:title" content="" />
+    
+
+    
+    <meta name="description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="张勇, Xtcel, xtcel, 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, 嵌入式,">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Tech | 张勇的博客 | XTCEL Blog</title>
+
+    <link rel="canonical" href="/categories/tech/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XTCEL Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/ios/">ios</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+<header class="intro-header" style="background-image: url('https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>XTCEL Blog </h1>
+                    
+		    <span class="subheading">关注技术，热爱设计</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+  
+<div data-pagefind-ignore="all" class="container">
+    <div class="row">
+        
+        
+   	    <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container
+        ">
+            
+<div data-pagefind-ignore="all">
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/opensumi/">
+        <h2 class="post-title">
+            阿里重磅开源！首款开源 IDE 研发框架 OpenSumi
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            历经3年的开发与打磨，在阿里集团及蚂蚁集团共建小组的努力下，OpenSumi 作为国内首个强定制性、高性能，兼容 VS Code 插件体系的 IDE 研发框架，今天正式对外开源，项目采用使用较为宽松的 MIT 许可协议
+        
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by      &#34;xtcel&#34; on Friday, March 4, 2022
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/%E4%BD%BF%E7%94%A8frp%E5%B0%86%E5%86%85%E7%BD%91%E7%BD%91%E7%AB%99%E5%8F%91%E5%B8%83%E5%88%B0%E5%A4%96%E7%BD%91/">
+        <h2 class="post-title">
+            使用frp将内网网站发布到外网
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            使用frp将内网网站发布到外网
+        
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by      &#34;xtcel&#34; on Thursday, June 4, 2020
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/flutter-text%E5%BA%95%E9%83%A8%E9%BB%84%E8%89%B2%E5%8F%8C%E5%88%92%E7%BA%BF/">
+        <h2 class="post-title">
+            Flutter Text底部黄色双划线
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            问题 文字下面出现黄色双划线 没有使用Scaffold脚手架组件，Scaffold是一个Material风格APP的脚手架（包含AppBar、B
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by xtcel on Wednesday, December 11, 2019
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/flutter%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%88%9B%E5%BB%BA%E5%B9%B6%E8%BF%90%E8%A1%8C%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8/">
+        <h2 class="post-title">
+            Flutter桌面应用开发：创建并运行桌面应用
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            在Google I/O 2019上Flutter 团队宣布推出最新稳定版: Flutter 1.9。这是 Flutter 迄今为止最大的一次版本更新，Flutter 1.9 引入的新特性与更
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by xtcel on Sunday, December 1, 2019
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/laravel-php-artisan-migrate%E9%94%99%E8%AF%AF/">
+        <h2 class="post-title">
+            Laravel php artisan migrate错误
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            错误 运行php artisan migrate出现如下错误： In Connection.php line 664: SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `admin_users` add unique `admin_users_email_unique`(`email`)) In Connection.php line 458: SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by xtcel on Thursday, August 15, 2019
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/electron%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%92%8C%E5%AF%BC%E8%88%AA%E6%A0%8F%E9%9A%90%E8%97%8F/">
+        <h2 class="post-title">
+            Electron菜单栏和导航栏隐藏
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            隐藏菜单栏 在main/index.js中修改ready事件回调 app.on(&#39;ready&#39;, () =&gt; { createWindow() // 隐藏菜单栏 const { Menu } = require(&#39;electron&#39;); Menu.setApplicationMenu(null); // hide menu for Mac if (process.platform !== &#39;darwin&#39;) { app.dock.hide(); } }) 隐藏导航栏 在初始
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by xtcel on Tuesday, August 6, 2019
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/electron-vue_error_webpack_referenceerrorprocess_is_not_defined/">
+        <h2 class="post-title">
+            Electron-vue报错Webpack ReferenceError:process is not defined
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            报错 Webpack ReferenceError: process is not defined 最新重新安装electron-vue后，使用yarn安装项目，结果一直报错。起初以为是yarn的问题，使用npm安装也发现同
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by      &#34;&#34; on Thursday, July 4, 2019
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/centos%E9%85%8D%E7%BD%AEsftp/">
+        <h2 class="post-title">
+            CentOS 配置 sftp
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            安装依赖 yum install openssh-server openssl 备份 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak 修改ssh配置文件 vi /etc/ssh/sshd_config 文末添加 Subsystem sftp internal-sftp Match Group sftpgroup Match User xgwxsftp X11Forwarding no AllowTcpForwarding no ChrootDirectory /data/www/ ForceCommand internal-sftp 配置目录权限 mkdir -p /sftp/sftpuser //-p 表示parents，即递归创建
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by      &#34;xtcel&#34; on Saturday, June 29, 2019
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/%E5%9C%A8electron-vue%E4%B8%AD%E4%BD%BF%E7%94%A8opencv.js/">
+        <h2 class="post-title">
+            在 Electron 中使用 OpenCV.js
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            简介 Electron Electron 是一个使用 JavaScript, HTML 和 CSS 等 Web 技术创建原生程序的框架，可以一键生成在Window、Linux、Mac的桌面应用，他隔离了平台之间的差异，抽象
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by XTCEL Blog on Friday, March 15, 2019
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://localhost:1313/post/%E5%BF%98%E8%AE%B0develper%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%AD%94%E6%A1%88%E6%9B%B4%E6%96%B0appleid%E7%BB%91%E5%AE%9A%E6%89%8B%E6%9C%BA/">
+        <h2 class="post-title">
+            忘记Develper安全问题答案，更新Apple Id绑定手机
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            最近登录ITC,发现苹果又更新协议了，正常这个时候都是想直接到developer.apple.com直接点同意协议就👌，不过这次打开deve
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by XTCEL Blog on Tuesday, April 24, 2018
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+</div>
+
+            
+
+
+<ul class="pager" data-pagefind-ignore="all">
+    
+    
+    <li class="next">
+        <a href="/categories/tech/page/2/">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+       	</div>
+        
+
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+	
+    
+    
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+            
+            
+               
+            
+               
+            
+               
+            
+               
+                    <a href="/tags/centos" title="centos">
+                        centos
+                    </a>
+               
+            
+               
+                    <a href="/tags/electron" title="electron">
+                        electron
+                    </a>
+               
+            
+               
+            
+               
+                    <a href="/tags/flutter" title="flutter">
+                        flutter
+                    </a>
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+                    <a href="/tags/ios" title="ios">
+                        ios
+                    </a>
+               
+            
+               
+            
+               
+            
+               
+            
+               
+                    <a href="/tags/mac" title="mac">
+                        mac
+                    </a>
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+                    <a href="/tags/%E5%B4%A9%E6%BA%83" title="崩溃">
+                        崩溃
+                    </a>
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+                    <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE" title="防火墙配置">
+                        防火墙配置
+                    </a>
+               
+            
+        </div>
+    </section>
+    
+
+    
+    
+    
+</div>
+
+	</div>
+</div>
+
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:xtcelzhangyong@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    <li>
+                        <a href="https://x.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; XTCEL Blog 2024 | 粤ICP备19158799号-1
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

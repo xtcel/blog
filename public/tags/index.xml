@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 04 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>“首款开源IDE”</title>
+      <link>http://localhost:1313/tags/%E9%A6%96%E6%AC%BE%E5%BC%80%E6%BA%90ide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E9%A6%96%E6%AC%BE%E5%BC%80%E6%BA%90ide/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IDE</title>
+      <link>http://localhost:1313/tags/ide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ide/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenSumi</title>
+      <link>http://localhost:1313/tags/opensumi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/opensumi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sumi</title>
+      <link>http://localhost:1313/tags/sumi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/sumi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title> 内网穿透</title>
+      <link>http://localhost:1313/tags/-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Frp</title>
+      <link>http://localhost:1313/tags/frp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/frp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flutter</title>
+      <link>http://localhost:1313/tags/flutter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/flutter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flutter Text</title>
+      <link>http://localhost:1313/tags/flutter-text/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/flutter-text/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flutter桌面</title>
+      <link>http://localhost:1313/tags/flutter%E6%A1%8C%E9%9D%A2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/flutter%E6%A1%8C%E9%9D%A2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Laravel</title>
+      <link>http://localhost:1313/tags/laravel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/laravel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Migrate错误</title>
+      <link>http://localhost:1313/tags/migrate%E9%94%99%E8%AF%AF/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/migrate%E9%94%99%E8%AF%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Electron</title>
+      <link>http://localhost:1313/tags/electron/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/electron/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>导航栏隐藏</title>
+      <link>http://localhost:1313/tags/%E5%AF%BC%E8%88%AA%E6%A0%8F%E9%9A%90%E8%97%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%AF%BC%E8%88%AA%E6%A0%8F%E9%9A%90%E8%97%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Electron-Vue</title>
+      <link>http://localhost:1313/tags/electron-vue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/electron-vue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>报错 Process Is Not Defined</title>
+      <link>http://localhost:1313/tags/%E6%8A%A5%E9%94%99-process-is-not-defined/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E6%8A%A5%E9%94%99-process-is-not-defined/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Centos</title>
+      <link>http://localhost:1313/tags/centos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/centos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>配置sftp</title>
+      <link>http://localhost:1313/tags/%E9%85%8D%E7%BD%AEsftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E9%85%8D%E7%BD%AEsftp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenCV</title>
+      <link>http://localhost:1313/tags/opencv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/opencv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IOS</title>
+      <link>http://localhost:1313/tags/ios/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ios/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Swift</title>
+      <link>http://localhost:1313/tags/swift/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/swift/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>多语言本地化</title>
+      <link>http://localhost:1313/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Inputs - Outputs</title>
+      <link>http://localhost:1313/tags/inputs---outputs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/inputs---outputs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MVVM</title>
+      <link>http://localhost:1313/tags/mvvm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mvvm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>忘记Develper安全问题答案</title>
+      <link>http://localhost:1313/tags/%E5%BF%98%E8%AE%B0develper%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%AD%94%E6%A1%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%BF%98%E8%AE%B0develper%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%AD%94%E6%A1%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>更新AppleId绑定手机</title>
+      <link>http://localhost:1313/tags/%E6%9B%B4%E6%96%B0appleid%E7%BB%91%E5%AE%9A%E6%89%8B%E6%9C%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E6%9B%B4%E6%96%B0appleid%E7%BB%91%E5%AE%9A%E6%89%8B%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mac</title>
+      <link>http://localhost:1313/tags/mac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mac/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>http://localhost:1313/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UICollection</title>
+      <link>http://localhost:1313/tags/uicollection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/uicollection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>防火墙配置</title>
+      <link>http://localhost:1313/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Swfit</title>
+      <link>http://localhost:1313/tags/swfit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/swfit/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UIButton</title>
+      <link>http://localhost:1313/tags/uibutton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/uibutton/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ruby</title>
+      <link>http://localhost:1313/tags/ruby/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ruby/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MacOS10.12</title>
+      <link>http://localhost:1313/tags/macos10.12/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/macos10.12/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>崩溃</title>
+      <link>http://localhost:1313/tags/%E5%B4%A9%E6%BA%83/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%B4%A9%E6%BA%83/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>破解软件</title>
+      <link>http://localhost:1313/tags/%E7%A0%B4%E8%A7%A3%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E7%A0%B4%E8%A7%A3%E8%BD%AF%E4%BB%B6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AOP</title>
+      <link>http://localhost:1313/tags/aop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/aop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Runtime</title>
+      <link>http://localhost:1313/tags/runtime/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/runtime/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WordPress</title>
+      <link>http://localhost:1313/tags/wordpress/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/wordpress/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>博客</title>
+      <link>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jetbrains</title>
+      <link>http://localhost:1313/tags/jetbrains/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/jetbrains/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>2015苹果发布会</title>
+      <link>http://localhost:1313/tags/2015%E8%8B%B9%E6%9E%9C%E5%8F%91%E5%B8%83%E4%BC%9A/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/2015%E8%8B%B9%E6%9E%9C%E5%8F%91%E5%B8%83%E4%BC%9A/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MySql</title>
+      <link>http://localhost:1313/tags/mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nginx</title>
+      <link>http://localhost:1313/tags/nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/nginx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PHP</title>
+      <link>http://localhost:1313/tags/php/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/php/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ubuntu</title>
+      <link>http://localhost:1313/tags/ubuntu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>服务器</title>
+      <link>http://localhost:1313/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UICollectionView</title>
+      <link>http://localhost:1313/tags/uicollectionview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/uicollectionview/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>自定义CollectionViewLayout</title>
+      <link>http://localhost:1313/tags/%E8%87%AA%E5%AE%9A%E4%B9%89collectionviewlayout/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E8%87%AA%E5%AE%9A%E4%B9%89collectionviewlayout/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>QQ</title>
+      <link>http://localhost:1313/tags/qq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/qq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>漏洞</title>
+      <link>http://localhost:1313/tags/%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E6%BC%8F%E6%B4%9E/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>锯齿</title>
+      <link>http://localhost:1313/tags/%E9%94%AF%E9%BD%BF/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E9%94%AF%E9%BD%BF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>设备方向</title>
+      <link>http://localhost:1313/tags/%E8%AE%BE%E5%A4%87%E6%96%B9%E5%90%91/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E8%AE%BE%E5%A4%87%E6%96%B9%E5%90%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>加密</title>
+      <link>http://localhost:1313/tags/%E5%8A%A0%E5%AF%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%8A%A0%E5%AF%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/tags/linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/linux/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

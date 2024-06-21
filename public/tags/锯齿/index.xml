@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>锯齿 on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/%E9%94%AF%E9%BD%BF/</link>
+    <description>Recent content in 锯齿 on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 31 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E9%94%AF%E9%BD%BF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iOS旋转图片锯齿问题</title>
+      <link>http://localhost:1313/post/ios%E6%97%8B%E8%BD%AC%E5%9B%BE%E7%89%87%E9%94%AF%E9%BD%BF%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/ios%E6%97%8B%E8%BD%AC%E5%9B%BE%E7%89%87%E9%94%AF%E9%BD%BF%E9%97%AE%E9%A2%98/</guid>
+      <description>缘由 最近做项目，需要对一个小滑块进行旋转，滑块上面有一张图片。发现滑块只要一滑动就出现锯齿，后来发现是由于旋转变形时，图片仿射的多造成的。于</description>
+    </item>
+  </channel>
+</rss>

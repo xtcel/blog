@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>配置sftp on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/%E9%85%8D%E7%BD%AEsftp/</link>
+    <description>Recent content in 配置sftp on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 29 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E9%85%8D%E7%BD%AEsftp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS 配置 sftp</title>
+      <link>http://localhost:1313/post/centos%E9%85%8D%E7%BD%AEsftp/</link>
+      <pubDate>Sat, 29 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/centos%E9%85%8D%E7%BD%AEsftp/</guid>
+      <description>安装依赖 yum install openssh-server openssl 备份 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak 修改ssh配置文件 vi /etc/ssh/sshd_config 文末添加 Subsystem sftp internal-sftp Match Group sftpgroup Match User xgwxsftp X11Forwarding no AllowTcpForwarding no ChrootDirectory /data/www/ ForceCommand internal-sftp 配置目录权限 mkdir -p /sftp/sftpuser //-p 表示parents，即递归创建</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>多语言本地化 on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96/</link>
+    <description>Recent content in 多语言本地化 on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 14 May 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iOS中多语言本地化优化(Swift)</title>
+      <link>http://localhost:1313/post/ios%E4%B8%AD%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96%E4%BC%98%E5%8C%96swift/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/ios%E4%B8%AD%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96%E4%BC%98%E5%8C%96swift/</guid>
+      <description>原文链接：http://www.cocoachina.com/ios/20170809/20190.html 按照原文操作，发现脚本有问题，各</description>
+    </item>
+  </channel>
+</rss>

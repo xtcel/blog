@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="XTCEL Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg">
+    <meta property="twitter:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg" />
+    
+
+    
+    <meta name="title" content="RxSwift MVVM最佳实践：Inputs - Outputs（翻译）" />
+    <meta property="og:title" content="RxSwift MVVM最佳实践：Inputs - Outputs（翻译）" />
+    <meta property="twitter:title" content="RxSwift MVVM最佳实践：Inputs - Outputs（翻译）" />
+    
+
+    
+    <meta name="description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="张勇, Xtcel, xtcel, 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, 嵌入式,">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>RxSwift MVVM最佳实践：Inputs - Outputs（翻译） | 张勇的博客 | XTCEL Blog</title>
+
+    <link rel="canonical" href="/post/rxswift0-mvvm%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5inputs-outputs/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XTCEL Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/ios/">ios</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/mvvm" title="MVVM">
+                            MVVM
+                        </a>
+                        
+                        <a class="tag" href="/tags/inputs-outputs" title="Inputs - Outputs">
+                            Inputs - Outputs
+                        </a>
+                        
+                    </div>
+                    <h1>RxSwift MVVM最佳实践：Inputs - Outputs（翻译）</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                     &#34;&#34;
+                             
+                            on 
+                            Thursday, May 10, 2018
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <p>当谈到iOS架构时，MVVM是个很好的选择。它不仅提供了比MVC更好的可测试性，而且与VIPER等同类架构相比，这个架构是轻量级的。尽管如此，应该采用适当的方法来利用MVVM。否则，我们最终可能会使用一个类似的MVC版本，并添加一个额外的组件(ViewModel)。</p>
+<p>这篇文章介绍了一种叫Inputs - Outputs的方法，目前在Kickstarter上使用。在Kickstarter iOS应用中你可以看到大多以这种风格的编程方式。</p>
+<h4 id="principles-原则">Principles 原则</h4>
+<ul>
+<li>Inputs是一组对ViewModel有影响的操作和事件，比如按钮上的tap操作，或者viewDidLoad事件。</li>
+<li>Outputs表示视图需要去响应的变化。(译者注：比如数据的改变)</li>
+<li>由于ouput可能会随时间变化，所以最好在每个ouput中返回一个可观察的(在RxSwift上下文中)。</li>
+<li>在output中定义的行为不应该被表示为变量，因为我们不需要可观察的输入。</li>
+</ul>
+<h4 id="how-to-怎么做">How-to? 怎么做</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">protocol</span> <span style="color:#50fa7b">LoginViewModelInputsType</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">viewDidLoad</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">tapSubmit</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">type</span>(email: <span style="color:#8be9fd;font-style:italic">String</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">type</span>(password: <span style="color:#8be9fd;font-style:italic">String</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">protocol</span> <span style="color:#50fa7b">LoginViewModelOutputsType</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">validInput</span>: Observable&lt;<span style="color:#8be9fd;font-style:italic">Bool</span>&gt; { <span style="color:#ff79c6">get</span> }
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">isLoading</span>: Observable&lt;<span style="color:#8be9fd;font-style:italic">Bool</span>&gt; { <span style="color:#ff79c6">get</span> }
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">loginSuccess</span>: Observable&lt;<span style="color:#8be9fd;font-style:italic">Void</span>&gt; { <span style="color:#ff79c6">get</span> }
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">loginFailure</span>: Observable&lt;ErrorMessage&gt; { <span style="color:#ff79c6">get</span> }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">protocol</span> <span style="color:#50fa7b">LoginViewModelType</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">inputs</span>: LoginViewModelInputsType { <span style="color:#ff79c6">get</span> }
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">ouputs</span>: LoginViewModelOutputsType { <span style="color:#ff79c6">get</span> }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这就是LoginViewModel的样子:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#ff79c6">final</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">LoginViewModel</span>: LoginViewModelType, LoginViewModelInputsType, LoginViewModelOutputsType {
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">inputs</span>: LoginViewModelInputsType { <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">self</span> }
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">ouputs</span>: LoginViewModelOutputsType { <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">self</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#6272a4">// </span><span style="color:#6272a4">MARK:</span><span style="color:#6272a4"> - Inputs</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">let</span> <span style="color:#8be9fd;font-style:italic">_tapSubmit</span> = Variable&lt;<span style="color:#8be9fd;font-style:italic">Void</span>&gt;(())
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">tapSubmit</span>() { 
+</span></span><span style="display:flex;"><span>		_tapSubmit.value = ()
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">let</span> <span style="color:#8be9fd;font-style:italic">_email</span> = Variable&lt;<span style="color:#8be9fd;font-style:italic">String</span>&gt;(<span style="color:#f1fa8c">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">type</span>(email: <span style="color:#8be9fd;font-style:italic">String</span>) {
+</span></span><span style="display:flex;"><span>		_email.value = email
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#6272a4">// </span><span style="color:#6272a4">MARK:</span><span style="color:#6272a4"> - Ouputs</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">let</span> <span style="color:#8be9fd;font-style:italic">_loginSuccess</span> = Variable&lt;<span style="color:#8be9fd;font-style:italic">Void</span>&gt;(())
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd;font-style:italic">loginSuccess</span>: Observable&lt;<span style="color:#8be9fd;font-style:italic">Void</span>&gt; { <span style="color:#ff79c6">return</span> _loginSuccess.skip(<span style="color:#bd93f9">1</span>) }
+</span></span><span style="display:flex;"><span>	...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">init</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#8be9fd;font-style:italic">let</span> <span style="color:#8be9fd;font-style:italic">loginObservable</span> = _tapSubmit.asObservable().skip(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>			.flatMapLatest(login)
+</span></span><span style="display:flex;"><span>			.share()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		loginObservable
+</span></span><span style="display:flex;"><span>			.bind(to: _loginSuccess)
+</span></span><span style="display:flex;"><span>			.diposed(by: disposeBag)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#6272a4">// Binding for `_loginFailure` and `isLoading` goes here</span>
+</span></span><span style="display:flex;"><span>		...
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="why-inputs---outputs-为什么使用inputs---outputs">Why Inputs - Outputs? 为什么使用Inputs - Outputs</h4>
+<p>首先，通过使用这样的协议，我们实现了更高层次的抽象。因此，我们的代码更加面向行为，更容易测试。</p>
+<p>这种基于协议的约定的另一个优点是单元测试的可读性。让我们来看看下面这两个简单的测试:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">test_When_PasswordIsEmpty_Then_InputIsInvalid</span>() {
+</span></span><span style="display:flex;"><span>	viewModel.inputs.viewDidLoad()
+</span></span><span style="display:flex;"><span>	viewModel.inputs.type(email: <span style="color:#f1fa8c">&#34;abc@xyz.com&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#6272a4">// `grabLatestValue` is just an utility function we can write to retrieve</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#6272a4">// the latest value in the stream (during a specific period of time).</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#6272a4">// `RxBlocking` comes for the rescue.</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">let</span> <span style="color:#8be9fd;font-style:italic">validInput</span> = grabLatestValue(viewModel.outputs.validInput, duration: <span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>	expect(validInput).to(beFalse())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">test_When_Submitting_Then_ShouldShowLoadingAndThenHideWhenCompleted</span>() {
+</span></span><span style="display:flex;"><span>	viewModel.inputs.viewDidLoad()
+</span></span><span style="display:flex;"><span>	viewModel.inputs.type(email: <span style="color:#f1fa8c">&#34;abc@xyz.com&#34;</span>)
+</span></span><span style="display:flex;"><span>	viewModel.inputs.type(password: <span style="color:#f1fa8c">&#34;Password0&#34;</span>)
+</span></span><span style="display:flex;"><span>	viewModel.inputs.tapSubmit()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">let</span> <span style="color:#8be9fd;font-style:italic">loadingStates</span> = grabLatestValue(viewModel.outputs.isLoading, duration: <span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>	expect(loadingStates).to(beEqual([<span style="color:#ff79c6">true</span>, <span style="color:#ff79c6">false</span>]))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>通过查看与输入调用相关的代码，我们很快就能了解我们试图模拟的场景。同样，我们期望看到的是反映在输出上。</p>
+<h5 id="引用">引用</h5>
+<p>[1] <a href="https://github.com/kickstarter/native-docs/blob/master/vm-structure.md">https://github.com/kickstarter/native-docs/blob/master/vm-structure.md</a>
+[2] <a href="https://github.com/kickstarter/native-docs/blob/master/inputs-outputs.md">https://github.com/kickstarter/native-docs/blob/master/inputs-outputs.md</a></p>
+<p>原文：
+<a href="https://trinhngocthuyen.github.io/2017-12-20-MVVM-best-practice-Inputs-Outputs.html">https://trinhngocthuyen.github.io/2017-12-20-MVVM-best-practice-Inputs-Outputs.html</a></p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/%E5%BF%98%E8%AE%B0develper%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%AD%94%E6%A1%88%E6%9B%B4%E6%96%B0appleid%E7%BB%91%E5%AE%9A%E6%89%8B%E6%9C%BA/" data-toggle="tooltip" data-placement="top" title="忘记Develper安全问题答案，更新Apple Id绑定手机">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/ios%E4%B8%AD%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E5%8C%96%E4%BC%98%E5%8C%96swift/" data-toggle="tooltip" data-placement="top" title="iOS中多语言本地化优化(Swift)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+<script src="https://giscus.app/client.js"
+        data-repo="xtcel/xtcel.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTcyNTM1MjE"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOBv0lkc4CN8jv"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/centos" title="centos">
+                            centos
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/electron" title="electron">
+                            electron
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/flutter" title="flutter">
+                            flutter
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ios" title="ios">
+                            ios
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/mac" title="mac">
+                            mac
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E5%B4%A9%E6%BA%83" title="崩溃">
+                            崩溃
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE" title="防火墙配置">
+                            防火墙配置
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:xtcelzhangyong@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    <li>
+                        <a href="https://x.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; XTCEL Blog 2024 | 粤ICP备19158799号-1
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

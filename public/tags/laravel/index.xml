@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Laravel on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/laravel/</link>
+    <description>Recent content in Laravel on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 15 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Laravel php artisan migrate错误</title>
+      <link>http://localhost:1313/post/laravel-php-artisan-migrate%E9%94%99%E8%AF%AF/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/laravel-php-artisan-migrate%E9%94%99%E8%AF%AF/</guid>
+      <description>错误 运行php artisan migrate出现如下错误： In Connection.php line 664: SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `admin_users` add unique `admin_users_email_unique`(`email`)) In Connection.php line 458: SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length</description>
+    </item>
+  </channel>
+</rss>

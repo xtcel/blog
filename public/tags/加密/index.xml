@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>加密 on XTCEL Blog</title>
+    <link>http://localhost:1313/tags/%E5%8A%A0%E5%AF%86/</link>
+    <description>Recent content in 加密 on XTCEL Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 28 Oct 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E5%8A%A0%E5%AF%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iOS加密算法(DES、AES、MD5、SHA512、Base64)</title>
+      <link>http://localhost:1313/post/ios%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/ios%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</guid>
+      <description>在iOS的项目中，我们经常会用到加密技术，比如说在登录的时候，我们会先把密码用MD5加密再传输给服务器或者直接对所有的参数进行加密再Post</description>
+    </item>
+  </channel>
+</rss>
