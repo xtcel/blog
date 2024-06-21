@@ -22,12 +22,14 @@ jobs:
       - name: Build
         run: hugo --minify  
                
-      - name: Deploy HTML to OSS
-        uses: fangbinwei/aliyun-oss-website-action@v1
+      - name: 配置阿里云OSS 
+        uses: manyuanrong/setup-ossutil@v3.0
         with:
-            accessKeyId: ${{ secrets.OSS_KEY_ID }}
-            accessKeySecret: ${{ secrets.OSS_KEY_SECRET }}
-            bucket: xtcel-blog
-            # e.g. "oss-cn-shanghai.aliyuncs.com"
-            endpoint: oss-cn-guangzhou.aliyuncs.com
-            folder: ./public
+          endpoint: ${{ secrets.OSS_ENDPOINT }}
+          access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+
+      - name: 上传资源
+        run: |
+          ossutil rm -rf oss://${{ secrets.OSS_BUCKET }}
+          ossutil cp -rf public oss://${{ secrets.OSS_BUCKET }}
