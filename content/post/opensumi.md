@@ -11,7 +11,7 @@ categories:  ["Tech" ]
 
 历经3年的开发与打磨，在阿里集团及蚂蚁集团共建小组的努力下，OpenSumi 作为国内首个强定制性、高性能，兼容 VS Code 插件体系的 IDE 研发框架，今天正式对外开源，项目采用使用较为宽松的 MIT 许可协议。
 
-![](http://qn.xtcel.com/posts/opensumi/01.png)
+![](https://qn.xtcel.com/posts/opensumi/01.png)
 
 #### OpenSumi 是什么？
 
@@ -19,13 +19,13 @@ categories:  ["Tech" ]
 
 框架自身兼容 VS Code 插件生态，主流 VS Code 插件均可⽆缝在基于 OpenSumi 研发的产品中运行。同时，OpenSumi 为开发者提供了多种低成本、⾼定制的视图定制能力，能满足 IDE 场景下绝大多数视图定制场景。
 
-![](http://qn.xtcel.com/posts/opensumi/02.png)
+![](https://qn.xtcel.com/posts/opensumi/02.png)
 
 #### 再造一个VSCode ？
 
 OpenSumi的技术选型和架构都趋同与VSCode，并且还兼容VSCode的插件，这让人们不经意的想到阿里是想再造一个VSCode吗？其实在OpenSumi的Demo中，确实有一个和VSCode几乎一样的项目。笔者尝试下载安装试用了一下，和VSCode几乎没有差别。但这并不是OpenSumi的全部，从这个Demo中我们可以窥探出OpenSumi的基础能力，但阿里还有更大的野心。大部分程序员应该或多或少用过Jetbrains系列的IDE，这家捷克软件公司开发的IDE几乎覆盖了所有开发技术栈，有[IntelliJ IDEA](https://www.jetbrains.com/idea/)、[WebStorm](https://www.jetbrains.com/webstorm/)、[GoLand](https://www.jetbrains.com/go/)、[PyCharm](https://www.jetbrains.com/pycharm/)、[PhpStorm](https://www.jetbrains.com/phpstorm/)等等，包括大名鼎鼎的Android Studio也是采用他们的内核。OpenSumi就是要对标Jetbrains，希望借助开源的力量来创建一个基于OpenSumi的IDE产品矩阵。
 
-![](http://qn.xtcel.com/posts/opensumi/03.png)
+![](https://qn.xtcel.com/posts/opensumi/03.png)
 
 #### OpenSumi 有什么优势？
 

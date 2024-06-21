@@ -133,7 +133,7 @@ AOP：Aspect Oriented Programming，译为面向切面编程。
 
 当事件非常多时，你的setupAnalytics方法将会变得越来越长，而且不好维护。如果我们可以利用一张表格来配置事件统计，看起来会更加直观简洁。
 使用Xcode创建一个plist文件，其文件结构如图：
-![EventList.plish](https://upload-images.jianshu.io/upload_images/453533-23f4284ad6eb902c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![EventList.plish](https://s2.loli.net/2022/03/05/EkG5zNracTyJCSR.png)
 使用类名作为字典的键，值为一个数组，数组内存放该类下的事件列表，每个事件包含事件ID(EventId)和触发事件的方法名称（MethodName）。
 在AppDelegate.m中，添加事件统计的代码如下：
 
@@ -176,7 +176,7 @@ AOP：Aspect Oriented Programming，译为面向切面编程。
 首先，将Block改为```^(id<AspectInfo> aspectInfo, NSDictionary *dict)```，第一个参数一定要为```id<AspectInfo> aspectInfo```,后面接方法传递的对应类型的参数，这样便可以接收到方法调用传递的参数。但是每一个事件需要传递的参数都各不相同，那我们要如何配置呢？
 我的方案是：在plist的事件字典中加入一个键为Params，值为数组的键值对。修改后配置文件如下：
 
-![EventListV2](https://upload-images.jianshu.io/upload_images/453533-a0d4cbd4b540a4ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![EventListV2](https://s2.loli.net/2022/03/05/S6umyXa4MRZn1Af.png)
 统计代码：
 
 ```objective-c
