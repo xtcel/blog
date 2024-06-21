@@ -1,4 +1,4 @@
-baseurl = "https://xtcel.github.io"
+baseurl = "https://xtcel.com"
 title = "XTCEL Blog"
 theme = "hugo-theme-cleanwhite"
 languageCode = "zh-CN"
@@ -6,7 +6,7 @@ languageCode = "zh-CN"
 disqusShortname = ""
 googleAnalytics = ""
 preserveTaxonomyNames = true
-paginate = 5 #frontpage pagination
+paginate = 10 #frontpage pagination
 hasCJKLanguage = true
 
 [outputs]
@@ -16,7 +16,7 @@ home = ["HTML", "RSS", "Algolia"]
   header_image = "https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg"
   SEOTitle = "张勇的博客 | XTCEL Blog"
   description = "张勇, 程序员, 开源爱好者，生活探险家 | 这里是 程序员张同学 的博客，与你一起发现更大的世界。"
-  keyword = "张勇, Xtcel, xtcel, , 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, Rust, 微服务,"
+  keyword = "张勇, Xtcel, xtcel, 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, 嵌入式,"
   slogan = "关注技术，热爱设计"
 
   # icp
@@ -39,7 +39,6 @@ home = ["HTML", "RSS", "Algolia"]
 
   # Sidebar settings
   sidebar_about_description = "Software Developer, Open Source Enthusiast and Life Adventurer"
-  #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
   sidebar_avatar = "img/yuanfang.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
   featured_tags = true 
@@ -82,17 +81,17 @@ home = ["HTML", "RSS", "Algolia"]
   #custom_js = ["js/lightbox.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "js/main.js"]
 
   [params.social]
-  rss            = true 
+  #rss            = true 
+  github         = "https://github.com/xtcel"
+  twitter       = "https://x.com/xtcel"
   email          = "xtcelzhangyong@gmail.com"
   #facebook      = "full profile url in facebook"
   #googleplus    = "full profile url in googleplus"
-  #twitter       = "full profile url in twitter"
-  linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
-  stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
+  #linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
+  #stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
   #instagram     = "full profile url in instagram"
-  github         = "https://github.com/xtcel"
-  wechat         = "your wechat qr code image"
-#  medium         = "full profile url in medium"
+  #wechat         = "img/qrcode.png"
+  #medium         = "full profile url in medium"
   #pinterest     = "full profile url in pinterest"
   #reddit        = "full profile url in reddit"
   #gitlab        = "full profile url in gitlab"
@@ -120,13 +119,13 @@ home = ["HTML", "RSS", "Algolia"]
 
 [[params.addtional_menus]]
 title =  "BOOKS"
-href =  "/top/books/"
+href =  "/top/books"
 [[params.addtional_menus]]
 title =  "ARCHIVE"
-href =  "/top/archive/"
+href =  "/top/archive"
 [[params.addtional_menus]]
 title =  "ABOUT"
-href =  "/top/about/"
+href =  "/top/about"
 
 [outputFormats.Algolia]
 baseName = "algolia"

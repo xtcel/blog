@@ -3,28 +3,37 @@ title: "About"
 date: 2022-03-04T12:57:05+08:00
 draft: false
 ---
-![](/img/zhaohuabing.png)  **_Huabing Zhao_** is an ICT veteran with a passion for open source. He has a solid experience in the telecommunication and information technology industry for more than 17 years.
+# About Me
 
-Throughout his career, he has built a number of large-scale, cross-country OSS/BSS platforms/systems and operation tools, most of them are still running in productions.
+Hello! I'm xtcel, a seasoned software engineer with over a decade of experience in the tech industry. I graduated from Fujian Normal University with a degree in Software Engineering, and since then, I've been passionately involved in the world of internet product development.
 
-He loves open source and has been contributing to a variety of open source projects, including Istio(Service Mesh https://istio.io), ONAP(Open Network Automation Platform https://wiki.onap.org), Hugo(static site generators https://themes.gohugo.io/hugo-theme-cleanwhite/), etc.
+### Professional Journey
 
-He also has strong interests in various tech stuff such as Artificial Intelligence, Cryptocurrencies, Smart Home.
+With 10 years of hands-on experience in internet product development, I've honed my skills across a wide array of technologies. My expertise spans multiple platforms and frameworks, allowing me to create versatile and robust solutions. 
 
-Huabing holds a BS in Computer Science and Technology from Chongqing University in China.
+### Technical Skills
 
-Currently, Huabing is working on a 5G NFV&SDN orchestration and management platform, at the same time, he also wears the hat of PTL in ONAP(http://www.onap.org) open source project.
+- **iOS Development**: Crafting seamless and intuitive mobile applications for Apple's ecosystem.
+- **Android Development**: Building responsive and user-friendly apps for Android devices.
+- **Flutter**: Leveraging this powerful UI toolkit to create natively compiled applications for mobile, web, and desktop from a single codebase.
+- **Frontend Development**: Developing dynamic and engaging user interfaces using modern web technologies.
+- **Backend Development**: Designing and implementing scalable and efficient server-side logic.
+- **Embedded Systems**: Working with hardware and software integration for specialized applications.
 
-He is happy with his current job, but also willing to take new challenges if the opportunity matches his career path.
+### Online Presence
 
-While he is not working, he enjoys watching movies, swimming, hiking, travelling, writing blogs and learning languages.
+You can explore more about my work and thoughts on my [personal blog](http://xtcel.com). I regularly share insights, tutorials, and updates on various projects there. 
 
-Feel free to connect Huabing via Github (https://github.com/zhaohuabing) or drop him an email (zhaohuabing@gmail.com).
+Feel free to check out my [GitHub profile](https://github.com/xtcel) for a glimpse into my code repositories and contributions to the open-source community.
 
-## Talks
+### Get in Touch
 
-* [Service Mesh in Action with ONAP] (https://www.slideshare.net/HuabingZhao/service-mesh-in-action-with-onap) GNTC, 南京, 2018
-* [MSB to Support Carrier Grade ONAP Microservice Architecture with Service Mesh] (https://www.slideshare.net/HuabingZhao/msb-to-support-carrier-grade-onap-microservice-architecture-with-service-mesh) ONS, Los Angeles, 2018
-* [Microservice Powered Orchestration](https://www.slideshare.net/HuabingZhao/microservice-powered-orchestration-126100339) ONS, Santa Clara, 2017
-* [MSB Technical Deep Dive and ONAP Use Cases] (https://www.slideshare.net/HuabingZhao/msb-depp-dive/) ONAP Developer Event, New Jersey, 2017
-* [Microservice Bus Tutorial] (https://www.slideshare.net/HuabingZhao/microservice-bus-tutorial) ONAP Developer Event, Paris, 2017
+I'm always open to new opportunities and collaborations. You can reach me via email at xtcelzhangyong@gmail.com. Let's connect and create something amazing together!
+
+Thank you for visiting my page!
+
+---
+
+I hope this introduction provides a clear and comprehensive overview of my professional background and technical expertise. Feel free to reach out if you have any questions or if you'd like to discuss potential collaborations.
+
+
