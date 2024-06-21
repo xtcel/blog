@@ -27,7 +27,7 @@ jobs:
         with:
             accessKeyId: ${{ secrets.OSS_KEY_ID }}
             accessKeySecret: ${{ secrets.OSS_KEY_SECRET }}
-            bucket: codingbing
+            bucket: xtcel-blog
             # e.g. "oss-cn-shanghai.aliyuncs.com"
             endpoint: oss-cn-guangzhou.aliyuncs.com
             folder: ./public
