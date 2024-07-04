@@ -6,8 +6,15 @@
     <description>Recent content in Tech on XTCEL Blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 04 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>仓颉语言入门 —— 基本概念</title>
+      <link>http://localhost:1313/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Thu, 04 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
+      <description>仓颉语言入门——基本概念 本文将详细介绍仓颉语言的基本概念，包括标识符、程序结构、表达式和函数。这些概念是掌握仓颉语言的基础，理解它们将帮助你</description>
+    </item>
     <item>
       <title>阿里重磅开源！首款开源 IDE 研发框架 OpenSumi</title>
       <link>http://localhost:1313/post/opensumi/</link>

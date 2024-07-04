@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="XTCEL Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg">
+    <meta property="twitter:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg" />
+    
+
+    
+    <meta name="title" content="仓颉语言入门 —— 基本概念" />
+    <meta property="og:title" content="仓颉语言入门 —— 基本概念" />
+    <meta property="twitter:title" content="仓颉语言入门 —— 基本概念" />
+    
+
+    
+    <meta name="description" content="本文将详细介绍仓颉语言的基本概念，包括标识符、程序结构、表达式和函数。这些概念是掌握仓颉语言的基础，理解它们将帮助你更好地编写和维护代码。">
+    <meta property="og:description" content="本文将详细介绍仓颉语言的基本概念，包括标识符、程序结构、表达式和函数。这些概念是掌握仓颉语言的基础，理解它们将帮助你更好地编写和维护代码。" />
+    <meta property="twitter:description" content="本文将详细介绍仓颉语言的基本概念，包括标识符、程序结构、表达式和函数。这些概念是掌握仓颉语言的基础，理解它们将帮助你更好地编写和维护代码。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="张勇, Xtcel, xtcel, 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, 嵌入式,">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>仓颉语言入门 —— 基本概念 | 张勇的博客 | XTCEL Blog</title>
+
+    <link rel="canonical" href="/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XTCEL Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/ios/">ios</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/%E4%BB%93%E9%A2%89%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80" title="仓颉编程语言">
+                            仓颉编程语言
+                        </a>
+                        
+                        <a class="tag" href="/tags/cangjie" title="Cangjie">
+                            Cangjie
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E4%BB%93%E9%A2%89" title="仓颉">
+                            仓颉
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E4%BB%93%E9%A2%89%E8%AF%AD%E8%A8%80" title="仓颉语言">
+                            仓颉语言
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E4%BB%93%E9%A2%89%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8" title="仓颉语言入门">
+                            仓颉语言入门
+                        </a>
+                        
+                    </div>
+                    <h1>仓颉语言入门 —— 基本概念</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                     &#34;xtcel&#34;
+                             
+                            on 
+                            Thursday, July 4, 2024
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="仓颉语言入门基本概念">仓颉语言入门——基本概念</h1>
+<p>本文将详细介绍仓颉语言的基本概念，包括标识符、程序结构、表达式和函数。这些概念是掌握仓颉语言的基础，理解它们将帮助你更好地编写和维护代码。</p>
+<h2 id="标识符">标识符</h2>
+<p>标识符（Identifier）是用于标识变量、函数、类等编程元素的名称。在仓颉语言中，标识符由字母、数字、下划线组成，但不能以数字开头。标识符的命名应具有描述性，以提高代码的可读性。</p>
+<h3 id="规则">规则</h3>
+<ol>
+<li>标识符必须以字母或下划线 <code>_</code> 开头，后面可以跟字母、数字或下划线。如果以下划线开头则后面第一个必须跟英文字母。</li>
+<li>标识符区分大小写，例如 <code>variable</code> 和 <code>Variable</code> 是两个不同的标识符。</li>
+<li>避免使用仓颉语言的关键字作为标识符，不过可以在关键字外面加上一对反引号的方式使用关键字作为标识符，这种标识符在仓颉中称为原始标识符。</li>
+</ol>
+<h3 id="示例">示例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>let userName = <span style="color:#f1fa8c">&#34;John&#34;</span>;   <span style="color:#6272a4">// 有效标识符
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let _age = <span style="color:#bd93f9">30</span>;           <span style="color:#6272a4">// 有效标识符
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let $price = <span style="color:#bd93f9">99.99</span>;      <span style="color:#6272a4">// 无效标识符，不能包含 $ 符号
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let <span style="color:#bd93f9">2</span>ndItem = <span style="color:#f1fa8c">&#34;Apple&#34;</span>;   <span style="color:#6272a4">// 无效标识符，不能以数字开头
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let _123 = <span style="color:#f1fa8c">&#34;123&#34;</span>				 <span style="color:#6272a4">// 以下划线开头，其后第一个必需跟字母
+</span></span></span></code></pre></div><h2 id="程序结构">程序结构</h2>
+<p>在仓颉程序的顶层作用域中，可以定义一系列的变量、函数和自定义类型，其中的变量和函数分别被称为全局变量和全局函数。如果要将仓颉程序编译为可执行文件，您需要在顶层作用域中定义一个 main 函数作为程序入口。
+例如在以下程序中，我们在顶层作用域定义了全局变量 a 和全局函数 b，还有自定义类型 C、D 和 E，以及作为程序入口的 main 函数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#6272a4">// example.cj
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let a = <span style="color:#bd93f9">2023</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">b</span>() {}
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">struct</span> C {}
+</span></span><span style="display:flex;"><span>class D {}
+</span></span><span style="display:flex;"><span>enum E { F | G }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(a)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在非顶层作用域中不能定义上述自定义类型，但可以定义变量和函数，称之为<strong>局部变量</strong>和<strong>局部函数</strong>。特别地，对于定义在自定义类型中的变量和函数，称之为<strong>成员变量</strong>和<strong>成员函数</strong>。</p>
+<h3 id="变量">变量</h3>
+<p>在仓颉编程语言中，一个变量由对应的变量名、数据（值）和若干属性构成，开发者通过变量名访问变量对应的数据。
+变量定义的具体形式为：</p>
+<pre tabindex="0"><code>修饰符 变量名: 变量类型 = 初始值
+</code></pre><p>其中<strong>修饰符</strong>用于设置变量的各类属性，可以有一个或多个，常用的修饰符包括：</p>
+<ul>
+<li>可变性修饰符：let 与 var，分别对应不可变和可变属性，可变性决定了变量被初始化后其值还能否改变，仓颉变量也由此分为不可变变量和可变变量两类。</li>
+<li>可见性修饰符：private 与 public 等，影响全局变量和成员变量的可引用范围，详见后续章节的相关介绍。</li>
+<li>静态性修饰符：static，影响成员变量的存储和引用方式，详见后续章节的相关介绍。</li>
+</ul>
+<p>在定义仓颉变量时，可变性修饰符是必要的，在此基础上，还可以根据需要添加其他修饰符。</p>
+<ul>
+<li><strong>变量名</strong>应是一个合法的仓颉标识符。</li>
+<li><strong>变量类型</strong>指定了变量所持有数据的类型。当初始值具有明确类型时，可以省略变量类型标注，此时编译器可以自动推断出变量类型。</li>
+<li><strong>初始值</strong>是一个仓颉表达式，用于初始化变量，如果标注了变量类型，需要保证初始值类型和变量类型一致。在定义全局变量或静态成员变量时，必须指定初始值。在定义局部变量或实例成员变量时，可以省略初始值，但需要标注变量类型，同时要在此变量被引用前完成初始化，否则编译会报错。</li>
+</ul>
+<h3 id="值类型和引用类型变量">值类型和引用类型变量</h3>
+<p>程序在运行阶段，只有指令流转和数据变换，仓颉程序中的各种标识符已不复存在。由此可见，编译器使用了一些机制，将这些名字和编程所取用的数据实体/存储空间绑定起来。
+从编译器实现层面看，任何变量总会关联一个值（一般是通过内存地址/寄存器关联），只是在使用时，对有些变量，我们将直接取用这个值本身，这被称为<strong>值类型变量</strong>，而对另一些变量，我们把这个值作为索引、取用这个索引指示的数据，这被称为<strong>引用类型变量</strong>。值类型变量通常在线程栈上分配，每个变量都有自己的数据副本；引用类型变量通常在进程堆中分配，多个变量可引用同一数据对象，对一个变量执行的操作可能会影响其他变量。</p>
+<h3 id="作用域">作用域</h3>
+<p>作用域将名字和程序元素的绑定关系限制在一定范围里。不同作用域之间可以是并列或无关的，也可以是嵌套或包含关系。一个作用域将明确我们能用哪些名字访问哪些程序元素，具体规则是：</p>
+<ol>
+<li>当前作用域中定义的程序元素与名字的绑定关系，在当前作用域和其内层作用域中是有效的，可以通过此名字直接访问对应的程序元素。</li>
+<li>内层作用域中定义的程序元素与名字的绑定关系，在外层作用域中无效。</li>
+<li>内层作用域可以使用外层作用域中的名字重新定义绑定关系，根据规则 1，此时内层作用域中的命名相当于遮盖了外层作用域中的同名定义，对此我们称内层作用域的级别比外层作用域的级别高。</li>
+</ol>
+<p>在仓颉编程语言中，用一对大括号“{}”包围一段仓颉代码，即构造了一个新的作用域，其中可以继续使用大括号“{}”包围仓颉代码，由此产生了嵌套作用域，这些作用域均服从上述规则。特别的，在一个仓颉源文件中，不被任何大括号“{}”包围的代码，它们所属的作用域被称为“顶层作用域”，即当前文件中“最外层”的作用域，按上述规则，其作用域级别最低。</p>
+<h2 id="表达式">表达式</h2>
+<p>在仓颉编程语言中，凡是可求值的语言元素都是表达式。因此，仓颉不仅有传统的算术运算表达式，还有条件表达式、循环表达式和 try 表达式等，它们都可以被求值，并作为值去使用，如作为变量定义的初值和函数实参等。此外，因为仓颉是强类型的编程语言，所以仓颉表达式不仅可求值，还有确定的类型。
+任何一段程序的执行流程，只会涉及三种基本结构——顺序结构、分支结构和循环结构。实际上，分支结构和循环结构，是由某些指令控制当前顺序执行流产生跳转而得到的，它们让程序能够表达更复杂的逻辑，在仓颉中，这种用来控制执行流的语言元素就是条件表达式和循环表达式。</p>
+<h3 id="算术运算表达式">算术运算表达式</h3>
+<p>算术运算表达式用于进行数学计算，包括加减乘除和取余操作。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>let sum = <span style="color:#bd93f9">10</span> <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">20</span>;        <span style="color:#6272a4">// 加法
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let difference = <span style="color:#bd93f9">30</span> <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">10</span>; <span style="color:#6272a4">// 减法
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let product = <span style="color:#bd93f9">5</span> <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">6</span>;      <span style="color:#6272a4">// 乘法
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let quotient = <span style="color:#bd93f9">20</span> <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>;    <span style="color:#6272a4">// 除法
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let remainder = <span style="color:#bd93f9">7</span> <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">3</span>;    <span style="color:#6272a4">// 取余
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let isAdult = age &gt; <span style="color:#bd93f9">18</span>;               <span style="color:#6272a4">// 大于运算
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let isTeenager = age <span style="color:#ff79c6">&gt;=</span> <span style="color:#bd93f9">13</span> <span style="color:#ff79c6">&amp;&amp;</span> age <span style="color:#ff79c6">&lt;=</span> <span style="color:#bd93f9">19</span>; <span style="color:#6272a4">// 逻辑与运算
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let isNotAdult = !isAdult;           <span style="color:#6272a4">// 逻辑非运算
+</span></span></span></code></pre></div><h3 id="条件表达式">条件表达式</h3>
+<p>条件语句用于根据条件执行不同的代码块。在仓颉编程语言中，条件表达式分为 if 表达式和 if-let 表达式两种，它们的值与类型需要根据使用场景来确定。仓颉没有 switch-case 条件表达式，但完全可以使用更强大的 math 模式匹配表达式来替代。</p>
+<h4 id="if-表达式">if 表达式</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>let age = <span style="color:#bd93f9">20</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> (age &gt; <span style="color:#bd93f9">18</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;Adult&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;Minor&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="循环表达式">循环表达式</h3>
+<p>循环表达式用于重复执行某段代码，主要有 <code>for-in</code> 循环、<code>while</code> 循环和 <code>do-while</code> 循环。</p>
+<h4 id="while-表达式">while 表达式</h4>
+<p>while 表达式的基本形式为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">while</span> (条件) {
+</span></span><span style="display:flex;"><span>  循环体
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>其中“条件”是布尔类型表达式，“循环体”是一个代码块。while 表达式将按如下规则执行：</p>
+<ol>
+<li>计算“条件”表达式，如果值为 true 则转第 2 步，值为 false 转第 3 步。</li>
+<li>执行“循环体”，转第 1 步。</li>
+<li>结束循环，继续执行 while 表达式后面的代码。</li>
+</ol>
+<p>例如，以下程序使用 while 表达式，基于二分法，近似计算数字 2 的平方根：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> root = <span style="color:#bd93f9">0.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> min = <span style="color:#bd93f9">1.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> max = <span style="color:#bd93f9">2.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> <span style="color:#8be9fd">error</span> = <span style="color:#bd93f9">1.0</span>
+</span></span><span style="display:flex;"><span>    let tolerance = <span style="color:#bd93f9">0.1</span> <span style="color:#ff79c6">**</span> <span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">while</span> (<span style="color:#8be9fd">error</span> <span style="color:#ff79c6">**</span> <span style="color:#bd93f9">2</span> &gt; tolerance) {
+</span></span><span style="display:flex;"><span>        root = (min <span style="color:#ff79c6">+</span> max) <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2.0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">error</span> = root <span style="color:#ff79c6">**</span> <span style="color:#bd93f9">2</span> <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">2.0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (<span style="color:#8be9fd">error</span> &gt; <span style="color:#bd93f9">0.0</span>) {
+</span></span><span style="display:flex;"><span>            max = root
+</span></span><span style="display:flex;"><span>        } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>            min = root
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;2 的平方根约等于：${root}&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>运行以上程序，将输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#bd93f9">2</span> 的平方根约等于：<span style="color:#bd93f9">1.414215</span>
+</span></span></code></pre></div><h4 id="do-while-表达式">do-while 表达式</h4>
+<p>do-while 表达式的基本形式为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>do {
+</span></span><span style="display:flex;"><span>    循环体
+</span></span><span style="display:flex;"><span>} <span style="color:#50fa7b">while</span> (条件)
+</span></span></code></pre></div><p>其中“条件”是布尔类型表达式，“循环体”是一个代码块。do-while 表达式将按如下规则执行：</p>
+<ol>
+<li>执行“循环体”，转第 2 步。</li>
+<li>计算“条件”表达式，如果值为 true 则转第 1 步，值为 false 转第 3 步。</li>
+<li>结束循环，继续执行 do-while 表达式后面的代码。</li>
+</ol>
+<p>例如，以下程序使用 do-while 表达式，基于蒙特卡洛算法，近似计算圆周率的值：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> std.random.<span style="color:#ff79c6">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    let random = <span style="color:#50fa7b">Random</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> totalPoints = <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> hitPoints = <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    do {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 在 ((0, 0), (1, 1)) 这个正方形中随机取点
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        let x = random.<span style="color:#50fa7b">nextFloat64</span>()
+</span></span><span style="display:flex;"><span>        let y = random.<span style="color:#50fa7b">nextFloat64</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 判断是否落在正方形内接圆里
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">if</span> ((x <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">0.5</span>) <span style="color:#ff79c6">**</span> <span style="color:#bd93f9">2</span> <span style="color:#ff79c6">+</span> (y <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">0.5</span>) <span style="color:#ff79c6">**</span> <span style="color:#bd93f9">2</span> &lt; <span style="color:#bd93f9">0.25</span>) {
+</span></span><span style="display:flex;"><span>            hitPoints<span style="color:#ff79c6">++</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        totalPoints<span style="color:#ff79c6">++</span>
+</span></span><span style="display:flex;"><span>    } <span style="color:#50fa7b">while</span> (totalPoints &lt; <span style="color:#bd93f9">1000000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    let pi = <span style="color:#bd93f9">4.0</span> <span style="color:#ff79c6">*</span> <span style="color:#50fa7b">Float64</span>(hitPoints) <span style="color:#ff79c6">/</span> <span style="color:#50fa7b">Float64</span>(totalPoints)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;圆周率近似值为：${pi}&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>运行以上程序，将输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>圆周率近似值为：3.141872
+</span></span></code></pre></div><h4 id="for-in-表达式">for-in 表达式</h4>
+<p>for-in 表达式可以遍历那些扩展了迭代器接口 Iterable<!-- raw HTML omitted --> 的类型实例。for-in 表达式的基本形式为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#ff79c6">for</span> (迭代变量 in 序列) {
+</span></span><span style="display:flex;"><span>    循环体
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>其中“循环体”是一个代码块。“迭代变量”是单个标识符或由多个标识符构成的元组，用于绑定每轮遍历中由迭代器指向的数据，可以作为“循环体”中的局部变量使用。“序列”是一个表达式，它只会被计算一次，遍历是针对此表达式的值进行的，其类型必须扩展了迭代器接口 Iterable<!-- raw HTML omitted -->。for-in 表达式将按如下规则执行：</p>
+<ol>
+<li>计算“序列”表达式，将其值作为遍历对象，并初始化遍历对象的迭代器。</li>
+<li>更新迭代器，如果迭代器终止，转第 4 步，否则转第 3 步。</li>
+<li>将当前迭代器指向的数据与“迭代变量”绑定，并执行“循环体”，转第 2 步。</li>
+<li>结束循环，继续执行 for-in 表达式后面的代码。</li>
+</ol>
+<p>例如，以下程序使用 for-in 表达式，遍历中国地支字符构成的数组 noumenonArray，输出农历 2024 年各月的干支纪法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    let metaArray = [r<span style="color:#f1fa8c">&#39;甲&#39;</span>, r<span style="color:#f1fa8c">&#39;乙&#39;</span>, r<span style="color:#f1fa8c">&#39;丙&#39;</span>, r<span style="color:#f1fa8c">&#39;丁&#39;</span>, r<span style="color:#f1fa8c">&#39;戊&#39;</span>,
+</span></span><span style="display:flex;"><span>                     r<span style="color:#f1fa8c">&#39;己&#39;</span>, r<span style="color:#f1fa8c">&#39;庚&#39;</span>, r<span style="color:#f1fa8c">&#39;辛&#39;</span>, r<span style="color:#f1fa8c">&#39;壬&#39;</span>, r<span style="color:#f1fa8c">&#39;癸&#39;</span>]
+</span></span><span style="display:flex;"><span>    let noumenonArray = [r<span style="color:#f1fa8c">&#39;寅&#39;</span>, r<span style="color:#f1fa8c">&#39;卯&#39;</span>, r<span style="color:#f1fa8c">&#39;辰&#39;</span>, r<span style="color:#f1fa8c">&#39;巳&#39;</span>, r<span style="color:#f1fa8c">&#39;午&#39;</span>, r<span style="color:#f1fa8c">&#39;未&#39;</span>,
+</span></span><span style="display:flex;"><span>                         r<span style="color:#f1fa8c">&#39;申&#39;</span>, r<span style="color:#f1fa8c">&#39;酉&#39;</span>, r<span style="color:#f1fa8c">&#39;戌&#39;</span>, r<span style="color:#f1fa8c">&#39;亥&#39;</span>, r<span style="color:#f1fa8c">&#39;子&#39;</span>, r<span style="color:#f1fa8c">&#39;丑&#39;</span>]
+</span></span><span style="display:flex;"><span>    let year = <span style="color:#bd93f9">2024</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 年份对应的天干索引
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    let metaOfYear = ((year <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">10</span>) <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">10</span> <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">4</span>) <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 此年首月对应的天干索引
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">var</span> index = (<span style="color:#bd93f9">2</span> <span style="color:#ff79c6">*</span> metaOfYear <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">3</span>) <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">10</span> <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;农历 2024 年各月干支：&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (noumenon in noumenonArray) {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;${metaArray[index]}${noumenon} &#34;</span>)
+</span></span><span style="display:flex;"><span>        index = (index <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>) <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>运行以上程序，将输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>农历 <span style="color:#bd93f9">2024</span> 年各月干支：
+</span></span><span style="display:flex;"><span>丙寅 丁卯 戊辰 己巳 庚午 辛未 壬申 癸酉 甲戌 乙亥 丙子 丁丑
+</span></span></code></pre></div><h4 id="break-与-continue-表达式">break 与 continue 表达式</h4>
+<p>在循环结构的程序中，有时我们需要根据特定条件提前结束循环或跳过本轮循环，为此仓颉引入了 break 与 continue 表达式，它们可以出现在循环表达式的循环体中，break 用于终止当前循环表达式的执行、转去执行循环表达式之后的代码，continue 用于提前结束本轮循环、进入下一轮循环。break 与 continue 表达式的类型都是 Nothing。
+例如，以下程序使用 for-in 表达式和 break 表达式，在给定的整数数组中，找到第一个能被 5 整除的数字：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    let numbers = [<span style="color:#bd93f9">12</span>, <span style="color:#bd93f9">18</span>, <span style="color:#bd93f9">25</span>, <span style="color:#bd93f9">36</span>, <span style="color:#bd93f9">49</span>, <span style="color:#bd93f9">55</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (number in numbers) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (number <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">5</span> <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">println</span>(number)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">break</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当 for-in 迭代至 numbers 数组的第三个数 25 时，由于 25 可以被 5 整除，所以将执行 if 分支中的 println 和 break，break 将终止 for-in 循环，numbers中的后续数字不会被遍历到，因此运行以上程序，将输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#bd93f9">25</span>
+</span></span></code></pre></div><p>以下程序使用 for-in 表达式和 continue 表达式，将给定整数数组中的奇数打印出来：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    let numbers = [<span style="color:#bd93f9">12</span>, <span style="color:#bd93f9">18</span>, <span style="color:#bd93f9">25</span>, <span style="color:#bd93f9">36</span>, <span style="color:#bd93f9">49</span>, <span style="color:#bd93f9">55</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (number in numbers) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (number <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">2</span> <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">continue</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">println</span>(number)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在循环迭代中，当 number 是偶数时，continue 将被执行，这会提前结束本轮循环、进入下一轮循环，println 不会被执行，因此运行以上程序，将输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#bd93f9">25</span>
+</span></span><span style="display:flex;"><span><span style="color:#bd93f9">49</span>
+</span></span><span style="display:flex;"><span><span style="color:#bd93f9">55</span>
+</span></span></code></pre></div><h3 id="函数">函数</h3>
+<p>函数是具有特定功能的代码块，可以通过函数名进行调用。函数的定义包括函数名、参数列表和函数体。</p>
+<h3 id="函数定义">函数定义</h3>
+<p>函数定义使用 <code>func</code> 关键字，后跟函数名、参数列表、可选的函数返回值类型和函数体。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">greet</span>(name: String) {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;Hello, &#34;</span> <span style="color:#ff79c6">+</span> name)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在上述代码中，<code>greet</code> 是一个函数，接受一个 <code>String</code> 类型参数 <code>name</code>，并打印问候语。</p>
+<h3 id="函数调用">函数调用</h3>
+<p>函数调用通过函数名和实参列表进行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">greet</span>(<span style="color:#f1fa8c">&#34;John&#34;</span>)
+</span></span></code></pre></div><h3 id="函数返回值">函数返回值</h3>
+<p>函数可以返回一个值，使用 <code>return</code> 语句。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">add</span>(a: Int64, b: Int64): Int64 {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> a <span style="color:#ff79c6">+</span> b
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>let result = <span style="color:#50fa7b">add</span>(<span style="color:#bd93f9">10</span>, <span style="color:#bd93f9">20</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">println</span>(result) <span style="color:#6272a4">// 输出 30
+</span></span></span></code></pre></div><h3 id="函数作用域">函数作用域</h3>
+<p>函数内部定义的变量在函数外部是不可见的，这称为函数作用域。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">testScope</span>() {
+</span></span><span style="display:flex;"><span>    let localVar = <span style="color:#f1fa8c">&#34;I&#39;m local&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(localVar)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">testScope</span>() <span style="color:#6272a4">// 输出 &#34;I&#39;m local&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">// println(localVar) // 错误，localVar 在此不可见
+</span></span></span></code></pre></div><h3 id="匿名函数和箭头函数">匿名函数和箭头函数</h3>
+<p>仓颉语言支持匿名函数和箭头函数，用于简化函数定义。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#6272a4">// 匿名函数
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let multiply = { a: Int64, b: Int64 =&gt; 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> a <span style="color:#ff79c6">*</span> b;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// 箭头函数
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let divide = (a, b) =&gt; a <span style="color:#ff79c6">/</span> b;
+</span></span></code></pre></div><h2 id="结论">结论</h2>
+<p>本文详细介绍了仓颉语言的基本概念，包括标识符、程序结构、表达式和函数。掌握这些基础知识，将有助于你更好地理解和使用仓颉语言进行编程。在实际开发中，建议结合具体项目进行实践，以巩固所学内容。希望本文对你的仓颉语言学习之旅有所帮助！</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/opensumi/" data-toggle="tooltip" data-placement="top" title="阿里重磅开源！首款开源 IDE 研发框架 OpenSumi">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+
+                
+<script src="https://giscus.app/client.js"
+        data-repo="xtcel/xtcel.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTcyNTM1MjE"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOBv0lkc4CN8jv"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/centos" title="centos">
+                            centos
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/electron" title="electron">
+                            electron
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/flutter" title="flutter">
+                            flutter
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ios" title="ios">
+                            ios
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/mac" title="mac">
+                            mac
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E5%B4%A9%E6%BA%83" title="崩溃">
+                            崩溃
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE" title="防火墙配置">
+                            防火墙配置
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:xtcelzhangyong@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    <li>
+                        <a href="https://x.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; XTCEL Blog 2024 | 粤ICP备19158799号-1
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
