@@ -6,12 +6,26 @@
     <description>Recent content in 仓颉语言入门 on XTCEL Blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 04 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E4%BB%93%E9%A2%89%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>仓颉语言入门 —— 基本数据类型（二）</title>
+      <link>http://localhost:1313/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BA%8C/</link>
+      <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BA%8C/</guid>
+      <description>仓颉语言入门——基本数据类型（二） 在仓颉语言的编程之旅中，掌握基本数据类型是构建任何程序的基础。继前一篇文章介绍了整型、浮点型等数值类型后，</description>
+    </item>
+    <item>
+      <title>仓颉语言入门 —— 基本数据类型（一）</title>
+      <link>http://localhost:1313/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%80/</link>
+      <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%80/</guid>
+      <description>仓颉语言入门 —— 基本数据类型（一） 在编程语言中，数据类型是一个至关重要的概念，它决定了变量能够存储什么样的数据以及可以对这些数据进行哪些操作</description>
+    </item>
     <item>
       <title>仓颉语言入门 —— 基本概念</title>
       <link>http://localhost:1313/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link>
-      <pubDate>Tue, 04 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 04 Jul 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
       <description>仓颉语言入门——基本概念 本文将详细介绍仓颉语言的基本概念，包括标识符、程序结构、表达式和函数。这些概念是掌握仓颉语言的基础，理解它们将帮助你</description>
     </item>

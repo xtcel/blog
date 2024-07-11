@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="XTCEL Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg">
+    <meta property="twitter:image" content="http://localhost:1313//https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg" />
+    
+
+    
+    <meta name="title" content="仓颉语言入门 —— 基本数据类型（二）" />
+    <meta property="og:title" content="仓颉语言入门 —— 基本数据类型（二）" />
+    <meta property="twitter:title" content="仓颉语言入门 —— 基本数据类型（二）" />
+    
+
+    
+    <meta name="description" content="在仓颉语言的编程之旅中，掌握基本数据类型是构建任何程序的基础。继前一篇文章介绍了整型、浮点型等数值类型后，本篇将深入探讨布尔类型、字符类型、字符串类型以及数组类型，帮助读者进一步了解仓颉语言的数据结构。">
+    <meta property="og:description" content="在仓颉语言的编程之旅中，掌握基本数据类型是构建任何程序的基础。继前一篇文章介绍了整型、浮点型等数值类型后，本篇将深入探讨布尔类型、字符类型、字符串类型以及数组类型，帮助读者进一步了解仓颉语言的数据结构。" />
+    <meta property="twitter:description" content="在仓颉语言的编程之旅中，掌握基本数据类型是构建任何程序的基础。继前一篇文章介绍了整型、浮点型等数值类型后，本篇将深入探讨布尔类型、字符类型、字符串类型以及数组类型，帮助读者进一步了解仓颉语言的数据结构。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="张勇, Xtcel, xtcel, 张勇的网络日志, XTCEL Blog, 博客, 个人网站, 互联网, Web, 移动端开发, iOS, Android, Flutter, Electron, Tauri, 嵌入式,">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>仓颉语言入门 —— 基本数据类型（二） | 张勇的博客 | XTCEL Blog</title>
+
+    <link rel="canonical" href="/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BA%8C/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XTCEL Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/ios/">ios</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://s2.loli.net/2024/06/20/JXsELighNau2MkR.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/%E4%BB%93%E9%A2%89%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80" title="仓颉编程语言">
+                            仓颉编程语言
+                        </a>
+                        
+                        <a class="tag" href="/tags/cangjie" title="Cangjie">
+                            Cangjie
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E4%BB%93%E9%A2%89" title="仓颉">
+                            仓颉
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E4%BB%93%E9%A2%89%E8%AF%AD%E8%A8%80" title="仓颉语言">
+                            仓颉语言
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E4%BB%93%E9%A2%89%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8" title="仓颉语言入门">
+                            仓颉语言入门
+                        </a>
+                        
+                    </div>
+                    <h1>仓颉语言入门 —— 基本数据类型（二）</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                     &#34;xtcel&#34;
+                             
+                            on 
+                            Thursday, July 11, 2024
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h2 id="仓颉语言入门基本数据类型二">仓颉语言入门——基本数据类型（二）</h2>
+<p>在仓颉语言的编程之旅中，掌握基本数据类型是构建任何程序的基础。继前一篇文章介绍了整型、浮点型等数值类型后，本篇将深入探讨布尔类型、字符类型、字符串类型以及数组类型，帮助读者进一步了解仓颉语言的数据结构。</p>
+<h3 id="布尔类型bool">布尔类型（Bool）</h3>
+<p>布尔类型是仓颉语言中用于表示逻辑真假的数据类型。它只有两个可能的值：true 和 false。布尔类型在条件判断、循环控制以及逻辑运算中扮演着至关重要的角色。</p>
+<h4 id="示例代码">示例代码</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#6272a4">// 声明布尔变量  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let isOpen: Bool = <span style="color:#ff79c6">true</span>  
+</span></span><span style="display:flex;"><span>let isClosed = <span style="color:#ff79c6">false</span>  <span style="color:#6272a4">// 类型可以自动推断  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// 使用布尔变量进行条件判断  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">if</span> (isOpen) {  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;门是开着的&#34;</span>)  
+</span></span><span style="display:flex;"><span>} <span style="color:#ff79c6">else</span> {  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;门是关着的&#34;</span>)  
+</span></span><span style="display:flex;"><span>}  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// 逻辑运算  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let canEnter = isOpen <span style="color:#ff79c6">&amp;&amp;</span> !isClosed  <span style="color:#6272a4">// 逻辑与和逻辑非运算  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;可以进入吗？&#34;</span>, canEnter)
+</span></span></code></pre></div><h3 id="字符类型-rune">字符类型 （Rune）</h3>
+<p>字符类型用于表示单个字符，如字母、数字或符号。在仓颉语言中，字符类型使用 Rune 表示，可以表示 Unicode 字符集中的所有字符。
+单个字符的字符字面量举例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#6272a4">// 声明字符变量  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let firstChar: Rune = r<span style="color:#f1fa8c">&#39;A&#39;</span>  
+</span></span><span style="display:flex;"><span>let secondChar = r<span style="color:#f1fa8c">&#34;b&#34;</span>  <span style="color:#6272a4">// 类型可以自动推断 
+</span></span></span></code></pre></div><p>转义字符是指在一个字符序列中对后面的字符进行另一种解释的字符。转义字符使用转义符号 \ 开头，后面加需要转义的字符。
+举例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>let slash: Rune = <span style="color:#f1fa8c">&#39;\\&#39;</span>
+</span></span><span style="display:flex;"><span>let newLine: Rune = <span style="color:#f1fa8c">&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>let tab: Rune = <span style="color:#f1fa8c">&#39;\t&#39;</span>
+</span></span></code></pre></div><p>通用字符以 \u 开头，后面加上定义在一对花括号中的 1~8 个十六进制数，即可表示对应的 Unicode 值代表的字符。举例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    let he: Rune = &#39;\u{<span style="color:#bd93f9">4</span>f60}&#39;
+</span></span><span style="display:flex;"><span>    let llo: Rune = &#39;\u{<span style="color:#bd93f9">597</span>d}&#39;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(he)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(llo)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>编译并执行上述代码，输出结果为：</p>
+<pre tabindex="0"><code>你好
+</code></pre><h3 id="字符串类型string">字符串类型（String）</h3>
+<p>字符串类型用于表示一系列字符的集合，是处理文本数据的基础。在仓颉语言中，字符串类型使用 String 表示，由一串 Unicode 字符组合而成。</p>
+<h4 id="字符串字面量">字符串字面量</h4>
+<p>字符串字面量分为三类：单行字符串字面量，多行字符串字面量，多行原始字符串字面量。
+<strong>单行字符串字面量</strong>的内容定义在一对单引号或一对双引号之内，引号中的内容可以是任意数量的任意字符。单行字符串字面量只能写在同一行，不能跨越多行。举例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>let s1: String = <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>let s2 = &#39;Hello Cangjie Lang&#39;
+</span></span><span style="display:flex;"><span>let s3 = <span style="color:#f1fa8c">&#34;\&#34;Hello Cangjie Lang\&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>let s4 = &#39;Hello Cangjie Lang\n&#39;
+</span></span></code></pre></div><p><strong>多行字符串字面量</strong>开头结尾需各存在三个双引号（&quot;&quot;&quot;）或三个单引号（&rsquo;&rsquo;&rsquo;）。
+举例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>let s1: String = <span style="color:#f1fa8c">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>let s2 = <span style="color:#f1fa8c">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>Hello,
+</span></span><span style="display:flex;"><span>Cangjie Lang<span style="color:#f1fa8c">&#39;&#39;&#39;</span>
+</span></span></code></pre></div><p><strong>多行原始字符串字面量</strong>以一个或多个井号（#）和一个单引号（&rsquo;）或双引号（&quot;）开头，后跟任意数量的合法字符，直到出现与字符串开头相同的引号和与字符串开头相同数量的井号为止。
+在当前文件结束之前，如果还没遇到匹配的双引号和相同个数的井号，则编译报错。与多行字符串字面量一样，原始多行字符串字面量可以跨越多行。不同支持在于，转义规则不适用于多行原始字符串字面量，字面量中的内容会维持原样。举例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>let s1: String = #<span style="color:#f1fa8c">&#34;&#34;</span>#
+</span></span><span style="display:flex;"><span>let s2 = ##<span style="color:#f1fa8c">&#39;\n&#39;</span>##
+</span></span><span style="display:flex;"><span>let s3 = ###<span style="color:#f1fa8c">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Hello,
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Cangjie
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Lang&#34;</span>###
+</span></span></code></pre></div><h4 id="插值字符串">插值字符串</h4>
+<p>插值字符串是一种包含一个或多个插值表达式的字符串字面量（不适用于多行原始字符串字面量），通过将表达式插入到字符串中，可以有效避免字符串拼接的问题。
+插值表达式必须用花括号 {} 包起来，并在 {} 之前加上 $ 前缀。{} 中可以包含一个或者多个声明或表达式。
+下面是插值字符串的简单示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    let fruit = <span style="color:#f1fa8c">&#34;apples&#34;</span>
+</span></span><span style="display:flex;"><span>    let count = <span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>    let s = <span style="color:#f1fa8c">&#34;There are ${count * count} ${fruit}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(s)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    let r = <span style="color:#bd93f9">2.4</span>
+</span></span><span style="display:flex;"><span>    let area = <span style="color:#f1fa8c">&#34;The area of a circle with radius ${r} is ${let PI = 3.141592; PI * r * r}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(area)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>字符串类型支持的操作
+字符串类型支持使用关系操作符进行比较，支持使用 + 进行拼接。下面的例子展示了字符串类型的判等和拼接：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 字符串操作  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    let firstName = <span style="color:#f1fa8c">&#34;John&#34;</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> lastName = <span style="color:#f1fa8c">&#34;Doe&#34;</span>  
+</span></span><span style="display:flex;"><span>    let fullName = firstName <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34; &#34;</span> <span style="color:#ff79c6">+</span> lastName  <span style="color:#6272a4">// 字符串拼接  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">println</span>(fullName)  <span style="color:#6272a4">// 输出 &#34;John Doe&#34;  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 字符串长度  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">println</span>(greeting.length)  <span style="color:#6272a4">// 输出 13（包括空格和标点符号）
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
+</span></span></code></pre></div><p>字符串还支持其他常见操作，例如拆分、替换等。</p>
+<h3 id="数组类型array">数组类型（Array）</h3>
+<p>数组是一种基本的数据结构，用于存储一系列相同类型的元素。在仓颉语言中，数组是固定大小的。数组中的每个元素都可以通过索引来访问，索引从0开始。仓颉使用 Array<!-- raw HTML omitted --> 来表示 Array 类型。T 表示 Array 的元素类型，T 可以是任意类型。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">var</span> a: Array&lt;Int64&gt; = <span style="color:#ff79c6">...</span> <span style="color:#6272a4">// Array whose element type is Int64
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> b: Array&lt;String&gt; = <span style="color:#ff79c6">...</span> <span style="color:#6272a4">// Array whose element type is String
+</span></span></span></code></pre></div><h4 id="构造数组">构造数组</h4>
+<p>我们可以轻松使用字面量来初始化一个 Array，只需要使用方括号将逗号分隔的值列表括起来即可。
+编译器会根据上下文自动推断 Array 字面量的类型。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>let a: Array&lt;String&gt; = [] <span style="color:#6272a4">// Created an empty Array whose element type is String
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let b = [<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">1</span>] <span style="color:#6272a4">// Created a Array whose element type is Int64, containing elements 1, 2, 3, 3, 2, 1
+</span></span></span></code></pre></div><p>也可以使用构造函数的方式构造一个指定元素类型的 Array。
+需要注意的是，当通过 item 指定的初始值初始化 Array 时，该构造函数不会拷贝 item，如果 item 是一个引用类型，构造后数组的每一个元素都将指向相同的引用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>let a = Array&lt;Int64&gt;() <span style="color:#6272a4">// Created an empty Array whose element type is Int64
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let b = Array&lt;Int64&gt;(a) <span style="color:#6272a4">// Use another Array to initialize b
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let c = Array&lt;Int64&gt;(<span style="color:#bd93f9">3</span>, item: <span style="color:#bd93f9">0</span>) <span style="color:#6272a4">// Created an Array whose element type is Int64, length is 3 and all elements are initialized as 0
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let d = Array&lt;Int64&gt;(<span style="color:#bd93f9">3</span>, {i =&gt; i <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>}) <span style="color:#6272a4">// Created an Array whose element type is Int64, length is 3 and all elements are initialized by the initialization function
+</span></span></span></code></pre></div><h4 id="操作数组">操作数组</h4>
+<p>当我们需要对 Array 的所有元素进行访问时，可以使用 for-in 循环遍历 Array 的所有元素。当我们想访问单个指定位置的元素时，可以使用下标语法访问。非空 Array 的第一个元素总是从位置 0 开始的。我们可以从 0 开始访问 Array 的任意一个元素，直到最后一个位置（Array 的 size - 1）。通过 size 属性可以获取 Array 元素的个数。Array 是按元素插入顺序排列的，因此对 Array 遍历的顺序总是恒定的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    let arr = [<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (i in arr) {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;The element is ${i}&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    let a = arr[<span style="color:#bd93f9">0</span>] <span style="color:#6272a4">// a == 0
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    let c = arr[<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>] <span style="color:#6272a4">// 错误 array size is &#39;3&#39;, but access index is &#39;-1&#39;, which would overflow
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;The size of array is ${arr.size}&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>索引值不能使用负数或者大于等于 size，当编译器能检查出索引值非法时，会在编译时报错，否则会在运行时抛异常。</p>
+</blockquote>
+<p>Array 是一种长度不变的 Collection 类型，因此 Array 没有提供添加和删除元素的成员函数（后续章节将会介绍支持增删的 ArrayList 类型）。
+但是 Array 允许我们对其中的元素进行修改，同样使用下标语法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#50fa7b">main</span>() {\
+</span></span><span style="display:flex;"><span>    let arr = [<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">5</span>]
+</span></span><span style="display:flex;"><span>    arr[<span style="color:#bd93f9">0</span>] = <span style="color:#bd93f9">3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">println</span>(<span style="color:#f1fa8c">&#34;The first element is ${arr[0]}&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    let arr1 = [<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>]
+</span></span><span style="display:flex;"><span>    let arr2 = arr1
+</span></span><span style="display:flex;"><span>    arr2[<span style="color:#bd93f9">0</span>] = <span style="color:#bd93f9">3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// arr1 contains elements 3, 1, 2
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// arr2 contains elements 3, 1, 2
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
+</span></span></code></pre></div><p>Array 是引用类型，因此 Array 在作为表达式使用时不会拷贝副本，同一个 Array 实例的所有引用都会共享同样的数据。
+因此对 Array 元素的修改会影响到该实例的所有引用。</p>
+<h3 id="varray">VArray</h3>
+<p>仓颉编程语言引入了值类型数组 VArray&lt;T, $N&gt; ，其中 T 表示该值类型数组的元素类型，$N 是一个固定的语法，通过 $ 加上一个数值字面量表示这个值类型数组的长度。需要注意的是，VArray&lt;T, $N&gt; 不能省略 &lt;T, $N&gt;，且使用类型别名时，不允许拆分 VArray 关键字与其泛型参数。</p>
+<pre tabindex="0"><code>type varr1 = VArray&lt;Int64, $3&gt; // ok
+type varr2 = VArray // Error
+</code></pre><blockquote>
+<p>由于运行时后端限制，当前 VArray&lt;T, $N&gt; 的元素类型 T 或 T 的成员不能包含引用类型、枚举类型、Lambda 表达式（CFunc 除外）以及未实例化的泛型类型。</p>
+</blockquote>
+<p>VArray 可以由一个数组的字面量来进行初始化，左值 a 必须标识出 VArray 的实例化类型：</p>
+<pre tabindex="0"><code>var a: VArray&lt;Int64, $3&gt; = [1, 2, 3]
+</code></pre><p>同时，它拥有两个构造函数：</p>
+<pre tabindex="0"><code>// VArray&lt;T, $N&gt;(initElement: (Int64) -&gt; T)
+let b = VArray&lt;Int64, $5&gt;({ i =&gt; i}) // [0, 1, 2, 3, 4]
+// VArray&lt;T, $N&gt;(item!: T)
+let c = VArray&lt;Int64, $5&gt;(item: 0) // [0, 0, 0, 0, 0]
+</code></pre><p>除此之外，VArray&lt;T, $N&gt; 类型提供了两个成员方法：</p>
+<ul>
+<li>用于下标访问和修改的 [] 操作符方法：</li>
+</ul>
+<pre tabindex="0"><code>var a: VArray&lt;Int64, $3&gt; = [1, 2, 3]
+let i = a[1] // i is 2
+a[2] = 4 // a is [1, 2, 4]
+</code></pre><ul>
+<li>用于获取 VArray 长度的 size 成员：</li>
+</ul>
+<pre tabindex="0"><code>var a: VArray&lt;Int64, $3&gt; = [1, 2, 3]
+let s = a.size // s is 3
+</code></pre><h2 id="总结">总结</h2>
+<p>通过本篇文章，我们深入了解了仓颉语言中的布尔类型、字符类型、字符串类型以及数组类型。这些基本数据类型是构建更复杂数据结构和算法的基础，掌握它们对于深入学习仓颉语言至关重要。希望读者能够通过实践加深对这些类型的理解，并在未来的编程实践中灵活运用。</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/cangjie/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%80/" data-toggle="tooltip" data-placement="top" title="仓颉语言入门 —— 基本数据类型（一）">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+
+                
+<script src="https://giscus.app/client.js"
+        data-repo="xtcel/xtcel.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTcyNTM1MjE"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOBv0lkc4CN8jv"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/cangjie" title="cangjie">
+                            cangjie
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/centos" title="centos">
+                            centos
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/electron" title="electron">
+                            electron
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/flutter" title="flutter">
+                            flutter
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ios" title="ios">
+                            ios
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/mac" title="mac">
+                            mac
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E4%BB%93%E9%A2%89" title="仓颉">
+                            仓颉
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E4%BB%93%E9%A2%89%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80" title="仓颉编程语言">
+                            仓颉编程语言
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E4%BB%93%E9%A2%89%E8%AF%AD%E8%A8%80" title="仓颉语言">
+                            仓颉语言
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E4%BB%93%E9%A2%89%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8" title="仓颉语言入门">
+                            仓颉语言入门
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E5%B4%A9%E6%BA%83" title="崩溃">
+                            崩溃
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE" title="防火墙配置">
+                            防火墙配置
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:xtcelzhangyong@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    <li>
+                        <a href="https://x.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/xtcel">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; XTCEL Blog 2024 | 粤ICP备19158799号-1
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
