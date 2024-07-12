@@ -367,31 +367,31 @@
 因此对 Array 元素的修改会影响到该实例的所有引用。</p>
 <h3 id="varray">VArray</h3>
 <p>仓颉编程语言引入了值类型数组 VArray&lt;T, $N&gt; ，其中 T 表示该值类型数组的元素类型，$N 是一个固定的语法，通过 $ 加上一个数值字面量表示这个值类型数组的长度。需要注意的是，VArray&lt;T, $N&gt; 不能省略 &lt;T, $N&gt;，且使用类型别名时，不允许拆分 VArray 关键字与其泛型参数。</p>
-<pre tabindex="0"><code>type varr1 = VArray&lt;Int64, $3&gt; // ok
-type varr2 = VArray // Error
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">type</span> varr1 = VArray&lt;Int64, $<span style="color:#bd93f9">3</span>&gt; <span style="color:#6272a4">// ok
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">type</span> varr2 = VArray <span style="color:#6272a4">// Error
+</span></span></span></code></pre></div><blockquote>
 <p>由于运行时后端限制，当前 VArray&lt;T, $N&gt; 的元素类型 T 或 T 的成员不能包含引用类型、枚举类型、Lambda 表达式（CFunc 除外）以及未实例化的泛型类型。</p>
 </blockquote>
 <p>VArray 可以由一个数组的字面量来进行初始化，左值 a 必须标识出 VArray 的实例化类型：</p>
-<pre tabindex="0"><code>var a: VArray&lt;Int64, $3&gt; = [1, 2, 3]
-</code></pre><p>同时，它拥有两个构造函数：</p>
-<pre tabindex="0"><code>// VArray&lt;T, $N&gt;(initElement: (Int64) -&gt; T)
-let b = VArray&lt;Int64, $5&gt;({ i =&gt; i}) // [0, 1, 2, 3, 4]
-// VArray&lt;T, $N&gt;(item!: T)
-let c = VArray&lt;Int64, $5&gt;(item: 0) // [0, 0, 0, 0, 0]
-</code></pre><p>除此之外，VArray&lt;T, $N&gt; 类型提供了两个成员方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">var</span> a: VArray&lt;Int64, $<span style="color:#bd93f9">3</span>&gt; = [<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">3</span>]
+</span></span></code></pre></div><p>同时，它拥有两个构造函数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#6272a4">// VArray&lt;T, $N&gt;(initElement: (Int64) -&gt; T)
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let b = VArray&lt;Int64, $<span style="color:#bd93f9">5</span>&gt;({ i =&gt; i}) <span style="color:#6272a4">// [0, 1, 2, 3, 4]
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">// VArray&lt;T, $N&gt;(item!: T)
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>let c = VArray&lt;Int64, $<span style="color:#bd93f9">5</span>&gt;(item: <span style="color:#bd93f9">0</span>) <span style="color:#6272a4">// [0, 0, 0, 0, 0]
+</span></span></span></code></pre></div><p>除此之外，VArray&lt;T, $N&gt; 类型提供了两个成员方法：</p>
 <ul>
 <li>用于下标访问和修改的 [] 操作符方法：</li>
 </ul>
-<pre tabindex="0"><code>var a: VArray&lt;Int64, $3&gt; = [1, 2, 3]
-let i = a[1] // i is 2
-a[2] = 4 // a is [1, 2, 4]
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">var</span> a: VArray&lt;Int64, $<span style="color:#bd93f9">3</span>&gt; = [<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">3</span>]
+</span></span><span style="display:flex;"><span>let i = a[<span style="color:#bd93f9">1</span>] <span style="color:#6272a4">// i is 2
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>a[<span style="color:#bd93f9">2</span>] = <span style="color:#bd93f9">4</span> <span style="color:#6272a4">// a is [1, 2, 4]
+</span></span></span></code></pre></div><ul>
 <li>用于获取 VArray 长度的 size 成员：</li>
 </ul>
-<pre tabindex="0"><code>var a: VArray&lt;Int64, $3&gt; = [1, 2, 3]
-let s = a.size // s is 3
-</code></pre><h2 id="总结">总结</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">var</span> a: VArray&lt;Int64, $<span style="color:#bd93f9">3</span>&gt; = [<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">3</span>]
+</span></span><span style="display:flex;"><span>let s = a.size <span style="color:#6272a4">// s is 3
+</span></span></span></code></pre></div><h2 id="总结">总结</h2>
 <p>通过本篇文章，我们深入了解了仓颉语言中的布尔类型、字符类型、字符串类型以及数组类型。这些基本数据类型是构建更复杂数据结构和算法的基础，掌握它们对于深入学习仓颉语言至关重要。希望读者能够通过实践加深对这些类型的理解，并在未来的编程实践中灵活运用。</p>
 
 
